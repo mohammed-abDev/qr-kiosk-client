@@ -1,0 +1,899 @@
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.productDetailsPage {
+  min-height: 100vh;
+
+  background: #f6f8f6;
+
+  color: #18251d;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+
+.productDetailsPage *,
+.productDetailsPage *::before,
+.productDetailsPage *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   DETAILS HEADER
+   ========================================================= */
+
+.detailsHeader {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 390px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 70px 20px 30px;
+
+  /*
+    The actual product image is supplied from JSX
+    through the --product-image CSS variable.
+  */
+
+  background:
+    #c9d5cc;
+
+  border-radius: 0 0 32px 32px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 25px rgba(20, 86, 46, 0.14);
+}
+
+
+/* =========================================================
+   BLURRED PRODUCT IMAGE BACKGROUND
+   ========================================================= */
+
+.detailsHeader::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -35px;
+
+  background-image:
+    var(--product-image);
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  /*
+    Strong blur gives the same soft background
+    effect as the reference image.
+  */
+
+  filter: blur(24px);
+
+  transform: scale(1.12);
+
+  opacity: 0.85;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   BACKGROUND COLOR / DARK OVERLAY
+   ========================================================= */
+
+.detailsHeader::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 40, 28, 0.12) 0%,
+      rgba(20, 40, 28, 0.03) 45%,
+      rgba(20, 40, 28, 0.16) 100%
+    );
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.backButton {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 18px;
+  left: 16px;
+
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  color: #18251d;
+
+  font-size: 27px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.95);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 17px rgba(0, 0, 0, 0.16);
+}
+
+
+.backButton:active {
+  transform: scale(0.94);
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.detailsImage {
+  position: relative;
+
+  z-index: 3;
+
+  width: min(82vw, 340px);
+
+  height: min(82vw, 340px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border: none;
+
+  border-radius: 0;
+
+  overflow: visible;
+
+  box-shadow: none;
+
+  color: #ffffff;
+
+  font-size: 70px;
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE ITSELF
+   ========================================================= */
+
+.detailsImage img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+
+  object-fit: contain;
+
+  object-position: center;
+
+  /*
+    Soft natural shadow underneath the product.
+  */
+
+  filter:
+    drop-shadow(
+      0 18px 20px
+      rgba(0, 0, 0, 0.28)
+    );
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE PLACEHOLDER
+   ========================================================= */
+
+.detailsImage {
+  color: #ffffff;
+}
+
+
+.detailsImage:has(img) {
+  font-size: 0;
+}
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.detailsContent {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  padding: 25px 18px 45px;
+
+  background: #ffffff;
+
+  border-radius: 30px 0;
+
+  border: #d6d7d6 1px solid;
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+.categoryName {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 6px 10px;
+
+  background: #fff1e8;
+
+  color: #fc6d11;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   PRODUCT NAME
+   ========================================================= */
+
+.detailsContent h1 {
+  margin: 12px 0 8px;
+
+  color: #18251d;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   PRICE
+   ========================================================= */
+
+.detailsPrice {
+  margin: 4px 0 13px;
+
+  color: #14562e;
+
+  font-size: 28px;
+
+  font-weight: 850;
+
+  line-height: 1.1;
+}
+
+
+.detailsPrice::after {
+  content: " Birr";
+
+  color: #fc6d11;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   AVAILABILITY
+   ========================================================= */
+
+.available,
+.unavailable {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+
+  font-weight: 750;
+}
+
+
+.available {
+  background: #eaf7ef;
+
+  color: #088239;
+}
+
+
+.available::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  background: #088239;
+
+  border-radius: 50%;
+}
+
+
+.unavailable {
+  background: #fff0f0;
+
+  color: #d93636;
+}
+
+
+.unavailable::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  background: #d93636;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.detailsContent > p {
+  margin: 22px 0;
+
+  color: #59665e;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   INFORMATION CARD
+   ========================================================= */
+
+.detailsInfo {
+  margin-top: 23px;
+
+  padding: 5px 17px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e8e3;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 4px 14px rgba(20, 86, 46, 0.06);
+}
+
+
+/* =========================================================
+   INFORMATION ITEM
+   ========================================================= */
+
+.detailsInfoItem {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  min-height: 58px;
+
+  border-bottom: 1px solid #edf1ee;
+}
+
+
+.detailsInfoItem:last-child {
+  border-bottom: none;
+}
+
+
+.detailsInfoItem span {
+  color: #7a857e;
+
+  font-size: 13px;
+}
+
+
+.detailsInfoItem strong {
+  color: #18251d;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   BACK TO MENU BUTTON
+   ========================================================= */
+
+.backButtonDetails {
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 25px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14562e,
+      #088239
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(20, 86, 46, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.backButtonDetails:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 23px rgba(20, 86, 46, 0.25);
+}
+
+
+.backButtonDetails:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================================
+   CUSTOMER STATE
+   ========================================================= */
+
+.customerState {
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 30px 20px;
+
+  background: #f6f8f6;
+
+  text-align: center;
+
+  color: #18251d;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+
+.customerState p {
+  margin: 13px 0 0;
+
+  color: #748078;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LOADING SPINNER
+   ========================================================= */
+
+.loadingSpinner {
+  width: 45px;
+
+  height: 45px;
+
+  border: 4px solid #dce8df;
+
+  border-top-color: #fc6d11;
+
+  border-radius: 50%;
+
+  animation:
+    spin
+    0.8s
+    linear
+    infinite;
+}
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.errorState {
+  padding: 35px 22px;
+}
+
+
+.errorIcon {
+  width: 65px;
+
+  height: 65px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #fff0f0;
+
+  border-radius: 50%;
+
+  font-size: 28px;
+}
+
+
+.errorState h3 {
+  margin: 17px 0 7px;
+
+  color: #18251d;
+
+  font-size: 20px;
+}
+
+
+.errorState p {
+  max-width: 330px;
+
+  margin: 0 auto 20px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ERROR RETRY BUTTON
+   ========================================================= */
+
+.retryButton {
+  min-height: 48px;
+
+  padding: 0 23px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #fc6d11;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 14px rgba(252, 109, 17, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.retryButton:hover {
+  background: #e85e09;
+
+  transform: translateY(-1px);
+}
+
+
+.retryButton:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+  .detailsHeader {
+    min-height: 470px;
+
+    padding-top: 80px;
+
+    border-radius: 0 0 34px 34px;
+  }
+
+
+  .detailsImage {
+    width: 390px;
+
+    height: 390px;
+  }
+
+
+  .detailsImage img {
+    filter:
+      drop-shadow(
+        0 20px 24px
+        rgba(0, 0, 0, 0.28)
+      );
+      
+  }
+
+
+  .detailsContent {
+    padding:
+      32px
+      25px
+      55px;
+  }
+
+
+  .detailsContent h1 {
+    font-size: 34px;
+  }
+
+
+  .detailsPrice {
+    font-size: 31px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+  .productDetailsPage {
+    padding-bottom: 30px;
+  }
+
+
+  .detailsHeader {
+    max-width: 1100px;
+
+    min-height: 500px;
+
+    margin: 0 auto;
+
+    border-radius:
+      0
+      0
+      36px
+      36px;
+  }
+
+
+  .detailsImage {
+    width: 420px;
+
+    height: 420px;
+  }
+
+
+  .detailsImage img {
+    filter:
+      drop-shadow(
+        0 23px 28px
+        rgba(0, 0, 0, 0.30)
+      );
+  }
+
+
+  .detailsContent {
+    max-width: 800px;
+
+    padding-top: 38px;
+  }
+
+
+  .backButton {
+    top: 24px;
+
+    left: 25px;
+  }
+
+
+  .detailsContent h1 {
+    font-size: 38px;
+  }
+
+
+  .detailsPrice {
+    font-size: 34px;
+  }
+
+
+  .detailsInfo {
+    padding-left: 22px;
+
+    padding-right: 22px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .detailsHeader {
+    min-height: 350px;
+
+    padding:
+      65px
+      15px
+      25px;
+  }
+
+
+  .detailsImage {
+    width: 285px;
+
+    height: 285px;
+  }
+
+
+  .detailsContent {
+    padding:
+      23px
+      15px
+      40px;
+  }
+
+
+  .detailsContent h1 {
+    font-size: 26px;
+  }
+
+
+  .detailsPrice {
+    font-size: 26px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .productDetailsPage *,
+  .productDetailsPage *::before,
+  .productDetailsPage *::after {
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+}

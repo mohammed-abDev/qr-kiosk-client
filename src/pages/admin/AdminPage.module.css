@@ -1,0 +1,7 @@
+.admin-page {
+  min-height: 100vh;
+  background: #f4f4f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

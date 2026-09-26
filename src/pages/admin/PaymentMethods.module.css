@@ -1,0 +1,1288 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding-bottom: 40px;
+
+  height: fit-content;
+
+  background: #ffffff;
+
+  border: 1px solid #e3ebe5;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 10px 35px rgba(20, 86, 46, 0.08);
+}
+
+
+/* ==============================
+   TOP BAR
+============================== */
+
+.topBar {
+  margin-bottom: 18px;
+}
+
+.backButton span {
+  font-size: 18px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 44px;
+  padding: 0 16px;
+
+  border: 1px solid #f9cfb6;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #14562e;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 10px rgba(20, 86, 46, 0.06);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.backButton:hover {
+  background: #f0f7f2;
+  transform: translateY(-1px);
+
+  box-shadow: 0 5px 14px rgba(20, 86, 46, 0.1);
+}
+
+.backButton:active {
+  transform: scale(0.97);
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 22px;
+}
+
+.headerText {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  min-width: 0;
+}
+
+.header h2 {
+  margin: 0;
+
+  color: #14562e;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.header p {
+  margin: 5px 0 0;
+
+  color: #748078;
+
+  font-size: 13px;
+}
+
+
+/* ==============================
+   ADD BUTTON
+============================== */
+
+.addButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  padding: 11px 17px;
+
+  border-radius: 11px;
+
+  background: #fc6d11;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 14px rgba(252, 109, 17, 0.2);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.addButton:hover {
+  background: #e85e09;
+  transform: translateY(-1px);
+}
+
+.addButton:active {
+  transform: scale(0.97);
+}
+
+.addButton span {
+  font-size: 17px;
+  line-height: 1;
+}
+
+
+/* ==============================
+   NOTIFICATION
+============================== */
+
+.notification {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 18px;
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  animation: notificationIn 0.25s ease;
+}
+
+.notification p {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.notification > button {
+  border: none;
+  background: transparent;
+
+  color: currentColor;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  opacity: 0.7;
+}
+
+.notificationIcon {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  color: white;
+
+  font-weight: 800;
+}
+
+.success {
+  background: #eaf7ef;
+  border: 1px solid #c9e8d3;
+  color: #088239;
+}
+
+.success .notificationIcon {
+  background: #088239;
+}
+
+.error {
+  background: #fff0f0;
+  border: 1px solid #f0cccc;
+  color: #d93636;
+}
+
+.error .notificationIcon {
+  background: #d93636;
+}
+
+@keyframes notificationIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==============================
+   FORM CARD
+============================== */
+
+.formCard {
+  margin-bottom: 20px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e8e3;
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 5px 18px rgba(20, 86, 46, 0.07);
+}
+
+.formHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.formLabel {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #fc6d11;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+}
+
+.formHeader h3 {
+  margin: 0;
+
+  color: #18251d;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.closeButton {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f1f4f2;
+
+  color: #526158;
+
+  font-size: 21px;
+
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background: #e5ebe7;
+}
+
+
+/* ==============================
+   FORM
+============================== */
+
+.formGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 13px;
+}
+
+.formGroup label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #33443a;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.formGroup input {
+  width: 100%;
+  height: 44px;
+
+  padding: 0 13px;
+
+  border: 1px solid #dce4df;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #18251d;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.formGroup input::placeholder {
+  color: #9aa59e;
+}
+
+.formGroup input:focus {
+  border-color: #fc6d11;
+
+  box-shadow:
+    0 0 0 3px rgba(252, 109, 17, 0.1);
+}
+
+
+/* ==============================
+   FORM BUTTONS
+============================== */
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 9px;
+
+  margin-top: 18px;
+}
+
+.cancelButton,
+.saveButton {
+  padding: 10px 17px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.cancelButton {
+  border: 1px solid #dce4df;
+
+  background: #ffffff;
+
+  color: #526158;
+}
+
+.saveButton {
+  border: none;
+
+  background: #14562e;
+
+  color: #ffffff;
+}
+
+.saveButton:hover {
+  background: #088239;
+}
+
+
+/* ==============================
+   PAYMENT LIST
+============================== */
+
+.paymentList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+/* ==============================
+   PAYMENT CARD
+============================== */
+
+.paymentCard {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  width: 100%;
+
+  padding: 14px 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e8e3;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 2px 8px rgba(20, 86, 46, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.paymentCard:hover {
+  transform: translateY(-2px);
+
+  border-color: #d2ded6;
+
+  box-shadow:
+    0 7px 18px rgba(20, 86, 46, 0.09);
+}
+
+
+/* ==============================
+   BANK ICON
+============================== */
+
+.bankIcon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: #fff1e8;
+
+  font-size: 23px;
+}
+
+
+/* ==============================
+   PAYMENT INFO
+============================== */
+
+.paymentInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.paymentInfo h3 {
+  margin: 0;
+
+  color: #18251d;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.paymentInfo p {
+  margin: 3px 0;
+
+  color: #748078;
+
+  font-size: 11px;
+}
+
+.paymentInfo strong {
+  color: #14562e;
+
+  font-size: 13px;
+
+  letter-spacing: 0.3px;
+
+  word-break: break-all;
+}
+
+
+/* ==============================
+   ACTIONS
+============================== */
+
+.actions {
+  display: flex;
+  gap: 7px;
+
+  flex-shrink: 0;
+}
+
+.editButton,
+.deleteButton {
+  padding: 8px 12px;
+
+  border-radius: 9px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.editButton {
+  border: 1px solid #dce4df;
+
+  background: #ffffff;
+
+  color: #14562e;
+}
+
+.editButton:hover {
+  background: #eaf7ef;
+  border-color: #14562e;
+}
+
+.deleteButton {
+  border: 1px solid #f0cccc;
+
+  background: #ffffff;
+
+  color: #d93636;
+}
+
+.deleteButton:hover {
+  background: #fff0f0;
+  border-color: #d93636;
+}
+
+/* ==============================
+   LOADING
+============================== */
+
+.loading {
+  min-height: 260px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #748078;
+
+  font-size: 13px;
+}
+
+.loading p {
+  margin-top: 12px;
+}
+
+.spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 4px solid #dce8df;
+  border-top-color: #fc6d11;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ==============================
+   EMPTY
+============================== */
+
+.empty {
+  padding: 55px 20px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e8e3;
+
+  border-radius: 17px;
+}
+
+.emptyIcon {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 14px;
+
+  border-radius: 50%;
+
+  background: #fff1e8;
+
+  font-size: 28px;
+}
+
+.empty h3 {
+  margin: 0;
+
+  color: #18251d;
+
+  font-size: 18px;
+}
+
+.empty p {
+  max-width: 360px;
+
+  margin: 7px auto 18px;
+
+  color: #748078;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.emptyButton {
+  border: none;
+
+  padding: 10px 16px;
+
+  border-radius: 10px;
+
+  background: #14562e;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.emptyButton:hover {
+  background: #088239;
+}
+
+
+/* ==============================
+   DELETE MODAL
+============================== */
+
+.modalOverlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(24, 37, 29, 0.48);
+
+  backdrop-filter: blur(5px);
+}
+
+.deleteModal {
+  width: 100%;
+  max-width: 390px;
+
+  padding: 25px 22px 21px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.2);
+
+  animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.deleteIcon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: #fff0f0;
+
+  font-size: 25px;
+}
+
+.deleteModal h3 {
+  margin: 0;
+
+  color: #18251d;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.deleteModal p {
+  margin: 8px auto 20px;
+
+  max-width: 310px;
+
+  color: #748078;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.deleteActions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 9px;
+}
+
+.modalCancel,
+.modalDelete {
+  height: 42px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.modalCancel {
+  border: 1px solid #dce4df;
+
+  background: #ffffff;
+
+  color: #526158;
+}
+
+.modalDelete {
+  border: none;
+
+  background: #d93636;
+
+  color: #ffffff;
+}
+
+.modalDelete:hover {
+  background: #c52f2f;
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+/* @media (max-width: 700px) {
+
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formGroup:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .paymentCard {
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    width: 100%;
+
+    margin-left: 64px;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+} */
+/* ==============================
+   MOBILE PAYMENT CARD
+============================== */
+
+@media (max-width: 700px) {
+
+  .paymentCard {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+
+    gap: 10px;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+  }
+
+  .bankIcon {
+    width: 44px;
+    height: 44px;
+
+    grid-column: 1;
+    grid-row: 1;
+
+    flex-shrink: 0;
+  }
+
+  .paymentInfo {
+    min-width: 0;
+    width: 100%;
+
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .paymentInfo h3,
+  .paymentInfo p,
+  .paymentInfo strong {
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .actions {
+    width: 100%;
+    min-width: 0;
+
+    margin-left: 0;
+
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+  }
+
+  .actions button {
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    padding: 9px 8px;
+  }
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 480px) {
+
+  .container {
+    padding-bottom: 25px;
+  }
+
+  .header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 14px;
+  }
+
+  .headerText {
+    width: 100%;
+  }
+
+  .titleIcon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .header h2 {
+    font-size: 19px;
+  }
+
+  .header p {
+    font-size: 12px;
+  }
+
+  .addButton {
+    width: 100%;
+  }
+
+  .formCard {
+    padding: 16px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formGroup:last-child {
+    grid-column: auto;
+  }
+
+  .formActions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cancelButton,
+  .saveButton {
+    width: 100%;
+  }
+
+  .paymentCard {
+    align-items: flex-start;
+
+    padding: 13px;
+  }
+
+  .bankIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .paymentInfo h3 {
+    font-size: 13px;
+  }
+
+  .paymentInfo strong {
+    font-size: 12px;
+  }
+
+  .actions {
+    margin-left: 54px;
+  }
+
+  .actions button {
+    padding: 8px 5px;
+
+    font-size: 10px;
+  }
+
+  .deleteModal {
+    padding: 23px 17px 18px;
+  }
+}
+
+/* =========================================
+   MOBILE PAYMENT METHODS
+========================================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 12px 40px;
+  }
+
+  /* HEADER */
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .headerText {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header h2 {
+    font-size: 25px;
+  }
+
+  .header p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .addButton {
+    width: 100%;
+  }
+
+
+  /* =========================================
+     PAYMENT CARD
+  ========================================= */
+
+  .paymentCard {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-columns: 48px minmax(0, 1fr);
+
+    grid-template-rows: auto auto;
+
+    align-items: start;
+
+    gap: 12px;
+
+    padding: 18px;
+
+    border-radius: 15px;
+  }
+
+
+  /* BANK ICON */
+
+  .bankIcon {
+    width: 48px;
+    height: 48px;
+
+    grid-column: 1;
+    grid-row: 1;
+
+    flex-shrink: 0;
+  }
+
+
+  /* PAYMENT INFORMATION */
+
+  .paymentInfo {
+    width: 100%;
+    min-width: 0;
+
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .paymentInfo h3 {
+    margin: 0 0 5px;
+
+    font-size: 16px;
+
+    line-height: 1.3;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .paymentInfo p {
+    margin: 0 0 5px;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .paymentInfo strong {
+    display: block;
+
+    max-width: 100%;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+
+  /* =========================================
+     ACTION BUTTONS
+  ========================================= */
+
+  .actions {
+    width: 100%;
+    min-width: 0;
+
+    margin: 4px 0 0;
+
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    display: flex;
+
+    gap: 8px;
+  }
+
+  .editButton,
+  .deleteButton {
+    flex: 1;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    padding: 10px 12px;
+
+    font-size: 13px;
+
+    text-align: center;
+  }
+
+
+  /* =========================================
+     FORM
+  ========================================= */
+
+  .formCard {
+    padding: 20px 17px;
+
+    border-radius: 15px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formGroup:last-child {
+    grid-column: auto;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .cancelButton,
+  .saveButton {
+    width: 100%;
+  }
+
+
+  /* =========================================
+     DELETE MODAL
+  ========================================= */
+
+  .deleteModal {
+    width: 100%;
+    max-width: 420px;
+
+    box-sizing: border-box;
+
+    padding: 24px 20px;
+
+    border-radius: 16px;
+  }
+
+  .modalActions {
+    flex-direction: column-reverse;
+  }
+
+  .cancelModalButton,
+  .confirmDeleteButton {
+    width: 100%;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .paymentCard {
+    padding: 15px;
+
+    grid-template-columns: 42px minmax(0, 1fr);
+
+    gap: 10px;
+  }
+
+  .bankIcon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .paymentInfo h3 {
+    font-size: 14px;
+  }
+
+  .paymentInfo p,
+  .paymentInfo strong {
+    font-size: 12px;
+  }
+
+  .editButton,
+  .deleteButton {
+    padding: 9px 7px;
+
+    font-size: 12px;
+  }
+}

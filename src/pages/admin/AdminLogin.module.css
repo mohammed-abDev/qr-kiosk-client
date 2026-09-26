@@ -1,0 +1,353 @@
+/* =========================================================
+   ADMIN LOGIN PAGE
+   ========================================================= */
+
+.loginPage {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px 16px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(252, 109, 17, 0.08),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #18201b 0%,
+      #202c24 50%,
+      #14562e 100%
+    );
+
+  color: #18251d;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+.loginPage *,
+.loginPage *::before,
+.loginPage *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LOGIN CARD
+   ========================================================= */
+
+.loginCard {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 35px 28px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LOGIN ICON
+   ========================================================= */
+
+.loginIcon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14562e,
+      #088239
+    );
+
+  font-size: 36px;
+
+  box-shadow:
+    0 10px 25px rgba(20, 86, 46, 0.2);
+}
+
+.loginIcon img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.loginCard h1 {
+  margin: 0;
+
+  color: #18251d;
+
+  font-size: 29px;
+  font-weight: 850;
+
+  letter-spacing: -0.5px;
+}
+
+.loginSubtitle {
+  margin: 8px 0 26px;
+
+  color: #748078;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.loginError {
+  margin-bottom: 20px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #f0caca;
+  border-radius: 11px;
+
+  background: #fff1f1;
+
+  color: #c62828;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.loginCard form {
+  width: 100%;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.formGroup {
+  margin-bottom: 19px;
+}
+
+.formGroup label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #26372c;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.formGroup input {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d8e2db;
+  border-radius: 11px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #18251d;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.formGroup input::placeholder {
+  color: #a0aaa4;
+}
+
+.formGroup input:focus {
+  border-color: #088239;
+
+  box-shadow:
+    0 0 0 3px rgba(8, 130, 57, 0.1);
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.loginButton {
+  width: 100%;
+  min-height: 52px;
+
+  margin-top: 6px;
+
+  border: none;
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14562e 0%,
+      #088239 100%
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(20, 86, 46, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.loginButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(20, 86, 46, 0.28);
+}
+
+.loginButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.loginButton:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .loginPage {
+    padding: 18px 12px;
+  }
+
+  .loginCard {
+    padding: 30px 20px;
+
+    border-radius: 20px;
+  }
+
+  .loginIcon {
+    width: 68px;
+    height: 68px;
+
+    margin-bottom: 17px;
+
+    border-radius: 19px;
+
+    font-size: 32px;
+  }
+
+  .loginCard h1 {
+    font-size: 26px;
+  }
+
+  .loginSubtitle {
+    margin-bottom: 23px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 700px) {
+  .loginCard {
+    padding: 42px 35px;
+  }
+
+  .loginIcon {
+    width: 82px;
+    height: 82px;
+
+    font-size: 39px;
+  }
+
+  .loginCard h1 {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .loginPage *,
+  .loginPage *::before,
+  .loginPage *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

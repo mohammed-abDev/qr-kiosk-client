@@ -1,0 +1,669 @@
+/* =========================================================
+   ADD PRODUCT PAGE
+   ========================================================= */
+
+.addProductPage {
+  min-height: 100vh;
+  background: #f5f7f5;
+  color: #18251d;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+.addProductPage *,
+.addProductPage *::before,
+.addProductPage *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.addProductContainer {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px 16px 50px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.backAdminButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 44px;
+  padding: 0 16px;
+
+  border: 1px solid #f9cfb6;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #14562e;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 10px rgba(20, 86, 46, 0.06);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.backAdminButton:hover {
+  background: #f0f7f2;
+  transform: translateY(-1px);
+
+  box-shadow: 0 5px 14px rgba(20, 86, 46, 0.1);
+}
+
+.backAdminButton:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   success
+   ========================================================= */
+
+.adminNotification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  min-width: 280px;
+  max-width: 400px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 18px;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  animation: notificationSlide 0.3s ease;
+}
+
+.adminNotification span {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-weight: 800;
+}
+
+.adminNotification p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.success {
+  border-left: 4px solid #2cb95d;
+  color: #16843d;
+}
+
+.success span {
+  background: #eaf8ef;
+  color: #2cb95d;
+}
+
+.error {
+  border-left: 4px solid #dc3545;
+  color: #b4232f;
+}
+
+.error span {
+  background: #fdecec;
+  color: #dc3545;
+}
+
+@keyframes notificationSlide {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .adminNotification {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    min-width: auto;
+  }
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.addProductHeader {
+  margin: 25px 0 22px;
+}
+
+.addProductHeader h1 {
+  margin: 0;
+
+  color: #14562e;
+
+  font-size: 30px;
+  font-weight: 850;
+
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.addProductHeader p {
+  margin: 8px 0 0;
+
+  color: #6d7972;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+
+.addProductError {
+  margin-bottom: 20px;
+  padding: 13px 15px;
+
+  border: 1px solid #f3caca;
+  border-radius: 12px;
+
+  background: #fff1f1;
+  color: #c62828;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.addProductCard {
+  width: 100%;
+
+  padding: 24px 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e8e3;
+  border-radius: 20px;
+
+  box-shadow:
+    0 5px 20px rgba(20, 86, 46, 0.07);
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.formGroup {
+  margin-bottom: 21px;
+}
+
+.formGroup:last-child {
+  margin-bottom: 0;
+}
+
+.formGroup label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #26372c;
+
+  font-size: 14px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.formGroup input[type="text"],
+.formGroup input[type="number"],
+.formGroup input[type="file"],
+.formGroup textarea,
+.formGroup select {
+  width: 100%;
+
+  border: 1px solid #d8e2db;
+  border-radius: 11px;
+
+  background: #fafafa;
+  color: #18251d;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* Text / Number */
+
+.formGroup input[type="text"],
+.formGroup input[type="number"] {
+  height: 48px;
+  padding: 0 14px;
+}
+
+
+/* Textarea */
+
+.formGroup textarea {
+  min-height: 110px;
+
+  padding: 13px 14px;
+
+  resize: vertical;
+
+  line-height: 1.5;
+}
+
+
+/* Select */
+
+.formGroup select {
+  height: 48px;
+  padding: 0 13px;
+
+  cursor: pointer;
+}
+
+
+/* Focus */
+
+.formGroup input[type="text"]:focus,
+.formGroup input[type="number"]:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: #088239;
+
+  box-shadow:
+    0 0 0 3px rgba(8, 130, 57, 0.1);
+}
+
+
+/* Placeholder */
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #9aa59e;
+}
+
+
+/* =========================================================
+   FILE INPUT
+   ========================================================= */
+
+.formGroup input[type="file"] {
+  padding: 8px;
+
+  cursor: pointer;
+
+  background: #fafcfb;
+}
+
+.formGroup input[type="file"]:focus {
+  border-color: #088239;
+}
+
+.formGroup input[type="file"]::file-selector-button {
+  margin-right: 10px;
+
+  padding: 8px 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #14562e;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.formGroup input[type="file"]::file-selector-button:hover {
+  background: #088239;
+}
+
+
+/* =========================================================
+   HELP TEXT
+   ========================================================= */
+
+.formGroup small {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #7b877f;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE PREVIEW
+   ========================================================= */
+
+.productImagePreview {
+  width: 100%;
+  height: 230px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f0f7f2,
+      #f9fbf9
+    );
+
+  border: 2px dashed #cddbd1;
+  border-radius: 16px;
+
+  color: #14562e;
+
+  font-size: 55px;
+}
+
+.productImagePreview img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   AVAILABILITY
+   ========================================================= */
+
+.availabilityOptions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+
+.availabilityOption {
+  min-height: 48px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d8e2db;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #647068;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.availabilityOption:hover {
+  transform: translateY(-1px);
+}
+
+
+/* Available */
+
+.activeAvailable {
+  border-color: #088239;
+
+  background: #eaf7ef;
+  color: #088239;
+}
+
+
+/* Out of stock */
+
+.activeUnavailable {
+  border-color: #d93636;
+
+  background: #fff0f0;
+  color: #d93636;
+}
+
+
+/* =========================================================
+   SAVE PRODUCT BUTTON
+   ========================================================= */
+
+.saveProductButton {
+  width: 100%;
+  min-height: 52px;
+
+  margin-top: 7px;
+
+  border: none;
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14562e 0%,
+      #088239 100%
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(20, 86, 46, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.saveProductButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 24px rgba(20, 86, 46, 0.25);
+}
+
+
+.saveProductButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+
+.saveProductButton:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 600px) {
+  .addProductContainer {
+    padding: 28px 25px 60px;
+  }
+
+  .addProductHeader {
+    margin-top: 30px;
+  }
+
+  .addProductHeader h1 {
+    font-size: 34px;
+  }
+
+  .addProductCard {
+    padding: 30px;
+    border-radius: 22px;
+  }
+
+  .productImagePreview {
+    height: 280px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+  .addProductContainer {
+    max-width: 900px;
+
+    padding-top: 35px;
+  }
+
+  .addProductHeader h1 {
+    font-size: 38px;
+  }
+
+  .addProductCard {
+    padding: 35px;
+  }
+
+  .productImagePreview {
+    height: 320px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .addProductContainer {
+    padding: 16px 12px 40px;
+  }
+
+  .addProductHeader {
+    margin: 21px 0 18px;
+  }
+
+  .addProductHeader h1 {
+    font-size: 27px;
+  }
+
+  .addProductCard {
+    padding: 19px 15px;
+
+    border-radius: 17px;
+  }
+
+  .productImagePreview {
+    height: 190px;
+  }
+
+  .availabilityOptions {
+    grid-template-columns: 1fr;
+  }
+
+  .availabilityOption {
+    min-height: 46px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .addProductPage *,
+  .addProductPage *::before,
+  .addProductPage *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,1617 @@
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+
+.adminDashboard {
+  min-height: 100vh;
+  background: #f5f7f6;
+  color: #1f2933;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+/* =========================================
+   NOTIFICATION
+========================================= */
+
+.adminNotification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 2000;
+
+  min-width: 280px;
+  max-width: 420px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px 18px;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+
+  border-left: 4px solid #088239;
+
+  animation: notificationSlide 0.3s ease;
+}
+
+.adminNotification.success {
+  border-left-color: #088239;
+}
+
+.adminNotification.error {
+  border-left-color: #d93025;
+}
+
+.adminNotification > span {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #e9f7ef;
+
+  color: #088239;
+
+  font-weight: 800;
+}
+
+.adminNotification.error > span {
+  background: #fdecec;
+  color: #d93025;
+}
+
+.adminNotification p {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.adminHeader {
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 32px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14562e,
+      #088239
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+.adminBrand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.adminBrandIcon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(252, 109, 17, 0.25);
+}
+
+.adminBrandIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+
+.adminBrand h1 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  letter-spacing: -0.3px;
+}
+
+.adminBrand p {
+  margin: 3px 0 0;
+
+  color: #b9c0c4;
+
+  font-size: 12px;
+}
+
+.logoutButton {
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  background: #fc6d11;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.logoutButton:hover {
+  background: linear-gradient(145deg, #fc6d11, #d94a00);;
+  transform: translateY(-1px);
+}
+
+.logoutButton:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.adminContainer {
+  width: min(1400px, calc(100% - 40px));
+
+  margin: 0 auto;
+
+  padding: 32px 0 60px;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.adminWelcome {
+  margin-bottom: 24px;
+
+  padding: 25px 28px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14562e,
+      #088239
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 25px rgba(8, 130, 57, 0.12);
+}
+
+.adminWelcome h2 {
+  margin: 0 0 7px;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.adminWelcome p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   STATISTICS
+========================================= */
+
+.adminStats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 24px;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e9e7;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+.statIcon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: #eef7f1;
+
+  font-size: 22px;
+}
+
+.statCard p {
+  margin: 0 0 4px;
+
+  color: #6b7478;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.statCard strong {
+  color: #20272b;
+
+  font-size: 25px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   DASHBOARD ACTIONS
+========================================= */
+
+.adminActions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 35px;
+}
+
+.dashboardAction {
+  min-height: 86px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  border: 1px solid #e1e6e3;
+
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  color: #20272b;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.035);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dashboardAction:hover {
+  transform: translateY(-2px);
+
+  border-color: #b9d8c4;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+.dashboardAction > span {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: #eef7f1;
+
+  font-size: 21px;
+}
+
+.dashboardAction strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 14px;
+}
+
+.dashboardAction small {
+  color: #788187;
+
+  font-size: 12px;
+}
+
+.dashboardAction.primary {
+  border-color: #f9cfb6;
+}
+
+/* .dashboardAction.primary > span {
+  background: #fff0e7;
+} */
+
+
+/* =========================================
+   PRODUCTS HEADER
+========================================= */
+
+.productsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 17px;
+}
+
+.productsHeader h2 {
+  margin: 0 0 4px;
+
+  color: #20272b;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.productsHeader p {
+  margin: 0;
+
+  color: #7a8388;
+
+  font-size: 13px;
+}
+
+.adminRefreshButton {
+  border: 1px solid #d9e1dc;
+
+  padding: 10px 15px;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #14562e;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.adminRefreshButton:hover:not(:disabled) {
+  background: #f1f8f3;
+
+  border-color: #a9cbb5;
+}
+
+.adminRefreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.adminProductSearch {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 14px;
+}
+
+.adminProductSearch input {
+  width: 100%;
+
+  min-height: 48px;
+
+  padding: 0 46px 0 43px;
+
+  border: 1px solid #dce3df;
+
+  border-radius: 11px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #20272b;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.adminProductSearch input::placeholder {
+  color: #a0a8ac;
+}
+
+.adminProductSearch input:focus {
+  border-color: #088239;
+
+  box-shadow:
+    0 0 0 3px rgba(8, 130, 57, 0.1);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 15px;
+
+  z-index: 1;
+
+  font-size: 16px;
+
+  pointer-events: none;
+}
+
+.adminClearSearch {
+  position: absolute;
+  right: 11px;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #edf0ef;
+
+  color: #687277;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.adminClearSearch:hover {
+  background: #dfe5e2;
+  color: #20272b;
+}
+
+
+/* =========================================
+   CATEGORY FILTER
+========================================= */
+
+.adminCategoryFilter {
+  display: flex;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+
+  overflow-x: auto;
+
+  padding-bottom: 3px;
+
+  scrollbar-width: thin;
+}
+
+.adminCategoryButton {
+  flex-shrink: 0;
+
+  padding: 9px 16px;
+
+  border: 1px solid #d9e1dc;
+
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  color: #596469;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.adminCategoryButton:hover {
+  border-color: #9fc3ac;
+
+  color: #14562e;
+}
+
+.adminCategoryButton.active {
+  border-color: #14562e;
+
+  background: #14562e;
+
+  color: #ffffff;
+}
+
+
+/* =========================================
+   ACTIVE FILTER
+========================================= */
+
+.activeFilter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 14px;
+
+  padding: 10px 13px;
+
+  border-radius: 9px;
+
+  background: #eef7f1;
+
+  color: #14562e;
+
+  font-size: 13px;
+}
+
+.activeFilter button {
+  border: none;
+
+  background: transparent;
+
+  color: #088239;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.activeFilter button:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   SORT
+========================================= */
+
+.adminSortSelect {
+  width: 220px;
+
+  min-height: 42px;
+
+  margin-bottom: 20px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d9e1dc;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #414b50;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.adminSortSelect:focus {
+  border-color: #088239;
+
+  box-shadow:
+    0 0 0 3px rgba(8, 130, 57, 0.08);
+}
+
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+.adminProducts {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.adminProductCard {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid #e2e7e4;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 13px rgba(0, 0, 0, 0.045);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.adminProductCard:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.adminProductImageWrapper {
+  width: 100%;
+  height: 205px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #f2f5f3;
+}
+
+.adminProductImage {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.adminProductCard:hover .adminProductImage {
+  transform: scale(1.03);
+}
+
+.adminProductImagePlaceholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #edf4ef,
+      #f8faf9
+    );
+
+  color: #83908a;
+
+  font-size: 42px;
+}
+
+
+/* =========================================
+   PRODUCT INFORMATION
+========================================= */
+
+.adminProductInfo {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  padding: 17px 17px 13px;
+}
+
+.adminProductInfo h3 {
+  margin: 0 0 4px;
+
+  overflow: hidden;
+
+  color: #20272b;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.adminProductInfo p {
+  margin: 0;
+
+  color: #7a8589;
+
+  font-size: 12px;
+}
+
+.adminProductInfo > strong {
+  color: #fc6d11;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.adminAvailable,
+.adminUnavailable {
+  width: fit-content;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.adminAvailable {
+  color: #088239;
+}
+
+.adminUnavailable {
+  color: #d93025;
+}
+
+
+/* =========================================
+   PRODUCT ACTIONS
+========================================= */
+
+.adminProductActions {
+  display: grid;
+
+  grid-template-columns:
+    1.2fr 0.8fr 0.8fr;
+
+  gap: 8px;
+
+  margin-top: auto;
+
+  padding: 0 17px 17px;
+}
+
+.adminProductActions button {
+  min-height: 38px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.adminProductActions button:hover {
+  transform: translateY(-1px);
+}
+
+.availabilityButton {
+  border: 1px solid;
+}
+
+.availableAction {
+  border-color: #b9ddc5;
+
+  background: #edf8f1;
+
+  color: #087a34;
+}
+
+.availableAction:hover {
+  background: #dff2e5;
+}
+
+.unavailableAction {
+  border-color: #f0c2be;
+
+  background: #fff1f0;
+
+  color: #c52e24;
+}
+
+.unavailableAction:hover {
+  background: #ffe5e3;
+}
+
+.editButton {
+  border: 1px solid #d8e0dc;
+
+  background: #ffffff;
+
+  color: #14562e;
+}
+
+.editButton:hover {
+  border-color: #9fc3ac;
+
+  background: #f1f8f3;
+}
+
+.deleteButton {
+  border: 1px solid #efc7c4;
+
+  background: #ffffff;
+
+  color: #c52e24;
+}
+
+.deleteButton:hover {
+  border-color: #d93025;
+
+  background: #fff0ef;
+}
+
+
+/* =========================================
+   STATES
+========================================= */
+
+.adminState {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  text-align: center;
+
+  border: 1px solid #e2e7e4;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+}
+
+.adminState h3 {
+  margin: 15px 0 5px;
+
+  color: #30393d;
+
+  font-size: 17px;
+}
+
+.adminState p {
+  margin: 0;
+
+  color: #7b8589;
+
+  font-size: 13px;
+}
+
+.adminLoadingSpinner {
+  width: 40px;
+  height: 40px;
+
+  border: 4px solid #e2ebe5;
+
+  border-top-color: #088239;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+.adminErrorState {
+  border-color: #f0d2cf;
+}
+
+.adminStateIcon {
+  font-size: 38px;
+}
+
+.adminRetryButton {
+  margin-top: 17px;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  background: #14562e;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.adminRetryButton:hover {
+  background: #0e4424;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.adminEmpty {
+  min-height: 320px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 35px;
+
+  text-align: center;
+
+  border: 1px dashed #cbd6d0;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+}
+
+.adminEmpty > div {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 12px;
+
+  border-radius: 18px;
+
+  background: #eef7f1;
+
+  font-size: 30px;
+}
+
+.adminEmpty h3 {
+  margin: 0 0 7px;
+
+  color: #30393d;
+
+  font-size: 18px;
+}
+
+.adminEmpty p {
+  max-width: 420px;
+
+  margin: 0;
+
+  color: #7b8589;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.addProductButton,
+.clearSearchButton {
+  margin-top: 18px;
+
+  border: none;
+
+  padding: 11px 19px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.addProductButton {
+  background: #fc6d11;
+
+  color: #ffffff;
+}
+
+.addProductButton:hover {
+  background: #e85d08;
+
+  transform: translateY(-1px);
+}
+
+.clearSearchButton {
+  background: #14562e;
+
+  color: #ffffff;
+}
+
+.clearSearchButton:hover {
+  background: #0e4424;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   DELETE MODAL
+========================================= */
+
+.deleteModalOverlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 3000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 22, 18, 0.58);
+
+  backdrop-filter: blur(3px);
+
+  animation: modalFade 0.2s ease;
+}
+
+.deleteModal {
+  width: min(430px, 100%);
+
+  padding: 30px;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.2);
+
+  animation: modalScale 0.2s ease;
+}
+
+.deleteModalIcon {
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 16px;
+
+  border-radius: 50%;
+
+  background: #fff1ed;
+
+  font-size: 29px;
+}
+
+.deleteModal h2 {
+  margin: 0 0 10px;
+
+  color: #20272b;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.deleteModal p {
+  margin: 0 auto;
+
+  color: #687277;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.deleteModal p strong {
+  color: #20272b;
+}
+
+.deleteModalWarning {
+  display: block;
+
+  margin-top: 10px;
+
+  color: #d93025;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.deleteModalActions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+.cancelDeleteButton,
+.confirmDeleteButton {
+  min-height: 44px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cancelDeleteButton {
+  border: 1px solid #d8dfdb;
+
+  background: #ffffff;
+
+  color: #4f5a5f;
+}
+
+.cancelDeleteButton:hover {
+  background: #f4f6f5;
+
+  transform: translateY(-1px);
+}
+
+.confirmDeleteButton {
+  border: 1px solid #d93025;
+
+  background: #d93025;
+
+  color: #ffffff;
+}
+
+.confirmDeleteButton:hover {
+  background: #b9231b;
+
+  border-color: #b9231b;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes notificationSlide {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScale {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.95)
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      translateY(0);
+  }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+  .adminProducts {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .adminStats {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .adminHeader {
+    padding: 12px 18px;
+  }
+
+  .adminContainer {
+    width: min(100% - 24px, 700px);
+
+    padding-top: 20px;
+  }
+
+  .adminWelcome {
+    padding: 20px;
+  }
+
+  .adminWelcome h2 {
+    font-size: 21px;
+  }
+
+  .adminStats {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 16px;
+  }
+
+  .adminActions {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 27px;
+  }
+
+  .dashboardAction {
+    min-height: 72px;
+  }
+
+  .productsHeader {
+    align-items: flex-start;
+  }
+
+  .productsHeader h2 {
+    font-size: 21px;
+  }
+
+  .adminRefreshButton {
+    flex-shrink: 0;
+  }
+
+  .adminProducts {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .adminProductImageWrapper {
+    height: 220px;
+  }
+
+  .adminProductActions {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 8px;
+  }
+
+  .availabilityButton {
+    grid-column: 1 / -1;
+  }
+
+  .adminSortSelect {
+    width: 100%;
+  }
+
+  .adminNotification {
+    top: 15px;
+    right: 15px;
+    left: 15px;
+
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .adminHeader {
+    min-height: 68px;
+
+    padding: 10px 13px;
+  }
+
+  .adminBrand {
+    gap: 9px;
+  }
+
+  .adminBrandIcon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+  }
+
+  .adminBrand h1 {
+    font-size: 16px;
+  }
+
+  .adminBrand p {
+    font-size: 10px;
+  }
+
+  .logoutButton {
+    padding: 8px 12px;
+
+    font-size: 12px;
+  }
+
+  .adminContainer {
+    width: calc(100% - 20px);
+
+    padding-bottom: 35px;
+  }
+
+  .adminWelcome {
+    padding: 17px;
+
+    border-radius: 13px;
+  }
+
+  .adminWelcome h2 {
+    font-size: 19px;
+  }
+
+  .adminWelcome p {
+    font-size: 12px;
+
+    line-height: 1.5;
+  }
+
+  .statCard {
+    padding: 14px;
+  }
+
+  .statIcon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 19px;
+  }
+
+  .statCard strong {
+    font-size: 22px;
+  }
+
+  .dashboardAction {
+    padding: 14px;
+  }
+
+  .dashboardAction > span {
+    width: 40px;
+    height: 40px;
+
+    font-size: 18px;
+  }
+
+  .productsHeader {
+    gap: 10px;
+  }
+
+  .productsHeader h2 {
+    font-size: 19px;
+  }
+
+  .productsHeader p {
+    font-size: 11px;
+  }
+
+  .adminRefreshButton {
+    padding: 8px 10px;
+
+    font-size: 11px;
+  }
+
+  .adminProductImageWrapper {
+    height: 190px;
+  }
+
+  .adminProductInfo {
+    padding: 14px;
+  }
+
+  .adminProductActions {
+    padding: 0 14px 14px;
+  }
+
+  .deleteModal {
+    padding: 24px 19px;
+
+    border-radius: 15px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .adminNotification,
+  .deleteModalOverlay,
+  .deleteModal {
+    animation: none;
+  }
+
+  .adminLoadingSpinner {
+    animation: none;
+  }
+
+  .statCard,
+  .dashboardAction,
+  .adminProductCard,
+  .adminProductImage,
+  .logoutButton,
+  .adminProductActions button,
+  .adminRetryButton,
+  .addProductButton,
+  .clearSearchButton,
+  .cancelDeleteButton,
+  .confirmDeleteButton {
+    transition: none;
+  }
+}

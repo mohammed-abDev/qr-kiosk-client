@@ -1,0 +1,764 @@
+/* =========================================
+   CATEGORY MANAGER PAGE
+========================================= */
+
+.categoryManagerPage {
+  min-height: 100vh;
+  background: #f4f8f5;
+  padding: 30px 20px 60px;
+}
+
+.categoryManagerContainer {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   BACK
+========================================= */
+.backAdminButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 44px;
+  padding: 0 16px;
+
+  border: 1px solid #f9cfb6;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #14562e;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 10px rgba(20, 86, 46, 0.06);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.backAdminButton:hover {
+  background: #f0f7f2;
+  transform: translateY(-1px);
+
+  box-shadow: 0 5px 14px rgba(20, 86, 46, 0.1);
+}
+
+.backAdminButton:active {
+  transform: scale(0.97);
+}
+
+/* ======================================
+success notification
+========================================= */
+.adminNotification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  min-width: 280px;
+  max-width: 400px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 18px;
+  border-radius: 12px;
+
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  animation: notificationSlide 0.3s ease;
+}
+
+.adminNotification span {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-weight: 800;
+}
+
+.adminNotification p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.success {
+  border-left: 4px solid #2cb95d;
+  color: #16843d;
+}
+
+.success span {
+  background: #eaf8ef;
+  color: #2cb95d;
+}
+
+.error {
+  border-left: 4px solid #dc3545;
+  color: #b4232f;
+}
+
+.error span {
+  background: #fdecec;
+  color: #dc3545;
+}
+
+@keyframes notificationSlide {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .adminNotification {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    min-width: auto;
+  }
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.categoryManagerHeader {
+  margin-bottom: 25px;
+}
+
+.categoryManagerHeader h1 {
+  margin: 0 0 7px;
+
+  color: #14562e;
+
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.categoryManagerHeader p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 15px;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.categoryError {
+  margin-bottom: 20px;
+
+  padding: 13px 15px;
+
+  border: 1px solid #f1b8b8;
+
+  border-radius: 10px;
+
+  background: #fff1f1;
+
+  color: #b42318;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.categoryFormCard {
+  background: #ffffff;
+
+  border: 1px solid #e3ebe5;
+
+  border-radius: 18px;
+
+  padding: 28px;
+
+  margin-bottom: 25px;
+
+  box-shadow:
+    0 8px 30px rgba(20, 86, 46, 0.07);
+}
+
+.categoryFormCard h2 {
+  margin: 0 0 22px;
+
+  color: #14562e;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #26352c;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 13px 14px;
+
+  border: 1px solid #d7e1da;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #1f2937;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #088239;
+
+  box-shadow:
+    0 0 0 3px rgba(8, 130, 57, 0.1);
+}
+
+.formGroup textarea {
+  min-height: 100px;
+
+  resize: vertical;
+
+  font-family: inherit;
+}
+
+/* =========================================
+   FORM BUTTONS
+========================================= */
+
+.categoryFormButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.saveButton {
+  flex: 1;
+
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 13px 18px;
+
+  background: #14562e;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: #088239;
+
+  transform: translateY(-1px);
+}
+
+.saveButton:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+.cancelEditButton {
+  flex: 0 0 120px;
+
+  border: 1px solid #d5ddd8;
+
+  border-radius: 10px;
+
+  padding: 13px 18px;
+
+  background: #ffffff;
+
+  color: #4b5563;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.cancelEditButton:hover {
+  background: #f4f6f5;
+
+  border-color: #b8c5bd;
+}
+
+/* =========================================
+   CATEGORY LIST CARD
+========================================= */
+
+.categoryListCard {
+  background: #ffffff;
+
+  border: 1px solid #e3ebe5;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 30px rgba(20, 86, 46, 0.07);
+}
+
+/* =========================================
+   LIST HEADER
+========================================= */
+
+.categoryListHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 25px;
+
+  border-bottom: 1px solid #e7eee9;
+}
+
+.categoryListHeader h2 {
+  margin: 0;
+
+  color: #14562e;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.categoryListHeader span {
+  min-width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 8px;
+
+  border-radius: 20px;
+
+  background: #e9f6ee;
+
+  color: #088239;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* =========================================
+   CATEGORY LIST
+========================================= */
+
+.categoryList {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   CATEGORY ITEM
+========================================= */
+
+.categoryItem {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 20px 25px;
+
+  border-bottom: 1px solid #edf1ee;
+
+  transition: background 0.2s ease;
+}
+
+.categoryItem:last-child {
+  border-bottom: none;
+}
+
+.categoryItem:hover {
+  background: #fafcfb;
+}
+
+.categoryItemInfo {
+  min-width: 0;
+}
+
+.categoryItemInfo h3 {
+  margin: 0 0 5px;
+
+  color: #1f2937;
+
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.categoryItemInfo p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.categoryItemActions {
+  display: flex;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+.editButton,
+.deleteButton {
+  border: none;
+
+  border-radius: 8px;
+
+  padding: 9px 13px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.editButton {
+  background: #fff5e9;
+
+  color: #d96700;
+}
+
+.editButton:hover {
+  background: #ffe8ce;
+
+  transform: translateY(-1px);
+}
+
+.deleteButton {
+  background: #fff0f0;
+
+  color: #d92d20;
+}
+
+.deleteButton:hover {
+  background: #ffe0e0;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   EMPTY MESSAGE
+========================================= */
+
+.message {
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+/* =======================================
+   DELET MODAL
+========================================== */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(5px);
+
+  animation: fadeIn 0.2s ease;
+}
+
+.deleteModal {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 28px;
+
+  background: #ffffff;
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+  animation: modalSlide 0.25s ease;
+}
+
+.deleteModalIcon {
+  width: 52px;
+  height: 52px;
+
+  margin: 0 auto 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff1f1;
+  color: #dc3545;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.deleteModal h3 {
+  margin: 0 0 10px;
+
+  color: #1f2937;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.deleteModal p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.deleteModal p strong {
+  color: #1f2937;
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.cancelModalButton,
+.confirmDeleteButton {
+  flex: 1;
+
+  height: 44px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.cancelModalButton {
+  background: #f1f3f5;
+  color: #374151;
+}
+
+.cancelModalButton:hover {
+  background: #e5e7eb;
+}
+
+.confirmDeleteButton {
+  background: #dc3545;
+  color: #ffffff;
+}
+
+.confirmDeleteButton:hover {
+  background: #c82333;
+}
+.deleteModalWarning {
+  display: block;
+
+  margin-top: 10px;
+
+  color: #d93025;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlide {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .deleteModal {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .modalActions {
+    flex-direction: column-reverse;
+  }
+
+  .cancelModalButton,
+  .confirmDeleteButton {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .categoryManagerPage {
+    padding: 18px 12px 40px;
+  }
+
+  .categoryManagerHeader h1 {
+    font-size: 25px;
+  }
+
+  .categoryFormCard {
+    padding: 20px 17px;
+
+    border-radius: 15px;
+  }
+
+  .categoryListHeader {
+    padding: 17px 18px;
+  }
+
+  .categoryItem {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding: 18px;
+  }
+
+  .categoryItemActions {
+    width: 100%;
+  }
+
+  .editButton,
+  .deleteButton {
+    flex: 1;
+  }
+
+  .categoryFormButtons {
+    flex-direction: column;
+  }
+
+  .cancelEditButton {
+    flex: auto;
+    width: 100%;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .backAdminButton,
+  .formGroup input,
+  .formGroup textarea,
+  .saveButton,
+  .cancelEditButton,
+  .editButton,
+  .deleteButton,
+  .categoryItem {
+    transition: none;
+  }
+}

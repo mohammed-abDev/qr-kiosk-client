@@ -1,0 +1,2045 @@
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+.app {
+  --primary-green: #14562e;
+  --secondary-green: #088239;
+  --light-green: #eaf7ef;
+
+  --primary-orange: #fc6b11f2;
+  --light-orange: #fff1e8;
+
+  --dark-text: #18251d;
+  --text: #33443a;
+  --muted-text: #748078;
+
+  --white: #ffffff;
+  --background: #f6f8f6;
+  --border: #e1e8e3;
+
+  --danger: #d93636;
+  --light-danger: #fff0f0;
+
+  --shadow-sm: 0 2px 8px rgba(20, 86, 46, 0.07);
+  --shadow-md: 0 6px 20px rgba(20, 86, 46, 0.10);
+  --shadow-lg: 0 12px 30px rgba(20, 86, 46, 0.14);
+
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--dark-text);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  box-sizing: border-box;
+}
+
+.app *,
+.app *::before,
+.app *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 20px 15px 40px;
+  border-radius: 30px;
+}
+
+
+/* =========================================================
+   SEARCH BOX
+   ========================================================= */
+
+.searchBox {
+  position: relative;
+
+  margin-bottom: 17px;
+  
+
+}
+
+
+.searchBox::before {
+  content: "🔍";
+
+  position: absolute;
+
+  left: 16px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: 17px;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+.searchBox input {
+  width: 100%;
+
+  height: 52px;
+
+  padding: 0 16px 0 47px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  background: var(--white);
+
+  color: var(--dark-text);
+
+  font-size: 15px;
+
+  outline: none;
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+
+.searchBox input::placeholder {
+  color: #9aa59e;
+}
+
+
+.searchBox input:focus {
+  border-color: var(--primary-orange);
+
+  box-shadow:
+    0 0 0 3px rgba(252, 109, 17, 0.12),
+    var(--shadow-sm);
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+   ========================================================= */
+
+.categories {
+  width: 100%;
+
+  display: flex;
+
+  gap: 9px;
+
+  margin-bottom: 22px;
+
+  overflow-x: auto;
+
+  padding: 2px 2px 8px;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+
+.categories button {
+  flex: 0 0 auto;
+
+  min-height: 38px;
+
+  padding: 8px 17px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 999px;
+
+  background: var(--white);
+
+  color: var(--text);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.categories button:hover {
+  border-color: var(--secondary-green);
+
+  color: var(--secondary-green);
+
+  transform: translateY(-1px);
+}
+
+
+.categories button:active {
+  transform: scale(0.96);
+}
+
+
+/* ACTIVE CATEGORY */
+
+.categories button.active {
+  background: var(--primary-green);
+
+  border-color: var(--primary-green);
+
+  color: var(--white);
+
+  box-shadow:
+    0 4px 10px rgba(20, 86, 46, 0.18);
+}
+
+
+.categories button.active:hover {
+  background: var(--secondary-green);
+
+  border-color: var(--secondary-green);
+
+  color: var(--white);
+}
+
+
+/* =========================================================
+   CUSTOMER LOADING / ERROR STATES
+   ========================================================= */
+
+.customerState {
+  min-height: 280px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px 20px;
+
+  text-align: center;
+}
+
+
+.customerState p {
+  margin: 12px 0 0;
+
+  color: var(--muted-text);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LOADING SPINNER
+   ========================================================= */
+
+.loadingSpinner {
+  width: 42px;
+  height: 42px;
+
+  border: 4px solid #dce8df;
+
+  border-top-color: var(--primary-orange);
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.errorState {
+  background: var(--white);
+
+  border: 1px solid #f0dddd;
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+.errorIcon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--light-danger);
+
+  border-radius: 50%;
+
+  font-size: 25px;
+}
+
+
+.errorState h3 {
+  margin: 15px 0 5px;
+
+  color: var(--dark-text);
+
+  font-size: 18px;
+}
+
+
+.errorState p {
+  margin: 0 0 17px;
+
+  color: var(--muted-text);
+}
+
+
+/* =========================================================
+   RETRY BUTTON
+   ========================================================= */
+
+.retryButton {
+  border: none;
+
+  padding: 11px 22px;
+
+  border-radius: 11px;
+
+  background: var(--primary-orange);
+
+  color: var(--white);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(252, 109, 17, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.retryButton:hover {
+  background: #e85e09;
+
+  transform: translateY(-1px);
+}
+
+
+.retryButton:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================================
+   PRODUCTS GRID
+   ========================================================= */
+
+.products {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+.productCard {
+  display: flex;
+
+  width: 100%;
+
+  min-height: 126px;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+    
+}
+
+
+.productCard:hover {
+  transform: translateY(-3px);
+
+  border-color: #d3dfd7;
+
+  box-shadow: var(--shadow-md);
+}
+
+
+.productCard:active {
+  transform: scale(0.985);
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.productImage {
+  position: relative;
+  flex: 0 0 118px;
+  width: 118px;
+  height: 126px;
+  min-height: 126px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  background: #eef7f0;
+}
+
+/* Blurred version of the same image */
+.productImage::before {
+  content: "";
+  position: absolute;
+  inset: -15px;
+
+  background-image: var(--product-bg);
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(14px);
+  transform: scale(1.1);
+
+  opacity: 0.45;
+}
+
+/* Slight overlay to make the main image clearer */
+.productImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Actual product image */
+.productImage img {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+}
+
+.productCard:hover .productImage img {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   PRODUCT INFORMATION
+   ========================================================= */
+
+.productInfo {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 14px 14px 13px;
+}
+
+
+.productTop {
+  min-width: 0;
+}
+
+
+.productTop h2 {
+  margin: 0;
+
+  color: var(--dark-text);
+
+  font-size: 16px;
+  font-weight: 750;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   CATEGORY NAME
+   ========================================================= */
+
+.categoryName {
+  display: inline-block;
+
+  margin-top: 6px;
+
+  padding: 4px 8px;
+
+  background: var(--light-orange);
+
+  color: var(--primary-orange);
+
+  border-radius: 7px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   PRODUCT DESCRIPTION
+   ========================================================= */
+
+.productInfo > p {
+  display: -webkit-box;
+
+  margin: 7px 0 9px;
+
+  color: var(--muted-text);
+
+  font-size: 12px;
+
+  line-height: 1.45;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   PRODUCT BOTTOM
+   ========================================================= */
+
+.productBottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  margin-top: auto;
+}
+
+
+.productBottom strong {
+  color: var(--primary-green);
+
+  font-size: 15px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   AVAILABILITY
+   ========================================================= */
+
+.available,
+.unavailable {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 8px;
+
+  border-radius: 8px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+.available {
+  background: var(--light-green);
+
+  color: var(--secondary-green);
+}
+
+
+.available::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  background: var(--secondary-green);
+
+  border-radius: 50%;
+}
+
+
+.unavailable {
+  background: var(--light-danger);
+
+  color: var(--danger);
+}
+
+
+.unavailable::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  background: var(--danger);
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   NO PRODUCTS
+   ========================================================= */
+
+.noProducts {
+  min-height: 300px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 35px 20px;
+
+  text-align: center;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+.noProductsIcon {
+  width: 68px;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--light-orange);
+
+  border-radius: 50%;
+
+  font-size: 28px;
+
+  margin-bottom: 15px;
+}
+
+
+.noProducts h3 {
+  margin: 0;
+
+  color: var(--dark-text);
+
+  font-size: 18px;
+}
+
+
+.noProducts p {
+  margin: 7px 0 18px;
+
+  color: var(--muted-text);
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   CLEAR FILTERS BUTTON
+   ========================================================= */
+
+.clearSearchButton {
+  border: 1px solid var(--primary-orange);
+
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  background: var(--white);
+
+  color: var(--primary-orange);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.clearSearchButton:hover {
+  background: var(--primary-orange);
+
+  color: var(--white);
+
+  transform: translateY(-1px);
+}
+
+
+.clearSearchButton:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 650px) {
+  .header {
+    padding: 38px 25px 40px;
+
+    border-radius: 0 0 32px 32px;
+  }
+
+
+  .shopIcon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 25px;
+  }
+
+
+  .header h1 {
+    font-size: 31px;
+  
+   
+  }
+
+
+  .container {
+    padding: 26px 22px 50px;
+  }
+
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+
+  .productCard {
+    min-height: 135px;
+  }
+
+
+  .productImage {
+    flex-basis: 125px;
+
+    width: 125px;
+
+    min-height: 135px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+  .header {
+    padding: 45px 30px 48px;
+  }
+  
+
+
+  .container {
+    max-width: 1000px;
+
+    padding: 30px 25px 60px;
+  }
+
+
+  .searchBox {
+    margin-bottom: 20px;
+  }
+
+
+  .searchBox input {
+    height: 56px;
+
+    font-size: 16px;
+  }
+
+
+  .categories {
+    margin-bottom: 26px;
+  }
+
+
+  .categories button {
+    padding: 9px 19px;
+
+    font-size: 14px;
+  }
+
+
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+  }
+
+
+  .productCard {
+    display: block;
+
+    min-height: auto;
+  }
+
+
+  .productImage {
+    width: 100%;
+
+    height: 190px;
+
+    min-height: 190px;
+  }
+
+
+  .productInfo {
+    min-height: 145px;
+
+    padding: 15px 16px 16px;
+  }
+
+
+  .productTop h2 {
+    font-size: 17px;
+  }
+
+
+  .productInfo > p {
+    font-size: 13px;
+  }
+
+
+  .productBottom strong {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1100px;
+  }
+
+
+  .products {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .app *,
+  .app *::before,
+  .app *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+  margin-top: 40px;
+  padding: 20px 20px 18px;
+  background: linear-gradient(
+    135deg,
+    #14562e 0%,
+    #176b39 55%,
+    #088239 100%
+  );
+  color: white;
+  text-align: center;
+}
+
+.footerShop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footerLogo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.footerLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footerLogo span {
+  font-size: 26px;
+}
+
+.footerShop h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.footerShop p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.footerStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 20px;
+  padding: 7px 14px;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7cff9b;
+  box-shadow: 0 0 8px rgba(124, 255, 155, 0.7);
+}
+
+.footerThankYou {
+  margin: 18px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.footerBottom {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.footerAdminbtn{
+  background: none;
+  border: none;
+  color: #fc6d11;
+  
+}
+
+
+/* ==============================
+   FOOTER - MOBILE
+============================== */
+
+@media (max-width: 480px) {
+  .footer {
+    margin-top: 32px;
+    padding: 28px 16px 16px;
+  }
+
+  .footerShop {
+    gap: 10px;
+  }
+
+  .footerLogo {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+
+  .footerLogo span {
+    font-size: 22px;
+  }
+
+  .footerShop h2 {
+    font-size: 16px;
+  }
+
+  .footerShop p {
+    font-size: 12px;
+  }
+}
+
+
+/* ==============================
+   SHOP HEADER
+============================== */
+
+.header {
+  position: relative;
+  z-index: 10;
+
+  min-height: 150px;
+
+  padding: 30px 18px 70px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      145deg,
+      #063b25 0%,
+      #07512f 45%,
+      #087d3d 100%
+    );
+
+  border-radius: 0 0 30px 30px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.15);
+
+  overflow: hidden;
+}
+
+
+/* ==============================
+   BACKGROUND DECORATION
+============================== */
+
+.header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  top: -130px;
+  right: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 160px;
+  height: 160px;
+
+  bottom: -110px;
+  left: -70px;
+
+  border-radius: 50%;
+
+  background: rgba(252, 109, 17, 0.08);
+}
+
+
+/* ==============================
+   HEADER CONTENT
+============================== */
+
+.headerContent {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* ==============================
+   SHOP LOGO
+============================== */
+
+.shopIcon {
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 5px 15px rgba(252, 109, 17, 0.25);
+  
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+/* LOGO IMAGE */
+
+.shopIcon img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* FALLBACK ICON */
+
+.shopIcon span {
+  font-size: 34px;
+}
+
+
+/* ==============================
+   SHOP INFORMATION
+============================== */
+
+.shopInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.shopInfo h1 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.4px;
+
+  /* color: #ffffff; */
+ background: linear-gradient(
+    90deg,
+    #fc6d11 0%,
+    #088239 55%,
+    #FC6D11 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.shopInfo p {
+  margin: 7px 0 0;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  letter-spacing: 0.2px;
+}
+
+
+/* ==============================
+   UPDATED BADGE
+============================== */
+
+.updatedBadge {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 7px 11px;
+
+  border-radius: 999px;
+
+  background: rgba(46, 185, 94, 0.28);
+
+  border: 1px solid rgba(115, 230, 145, 0.25);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.updatedBadge span {
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #d9ffe4;
+
+  white-space: nowrap;
+}
+
+.updatedBadge small {
+  font-size: 10px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  white-space: nowrap;
+}
+
+
+/* ==============================
+   ORANGE ACCENT
+============================== */
+
+.headerAccentContainer {
+  position: absolute;
+
+  z-index: 3;
+
+  bottom: 18px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  width: max-content;
+
+  white-space: nowrap;
+}
+
+/* ==============================
+   ORANGE LINES
+============================== */
+
+.headerAccent {
+  width: 38px;
+  height: 3px;
+
+  flex-shrink: 0;
+
+  border-radius: 999px;
+
+  background: #fc6d11;
+
+  box-shadow:
+    0 3px 10px rgba(252, 109, 17, 0.45);
+}
+
+/* ==============================
+   WORDS
+============================== */
+
+.headerAccentContainer span {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  line-height: 1;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 480px) {
+
+  .header {
+    min-height: 100px;
+
+    padding: 27px 15px 65px;
+
+    border-radius: 0 0 26px 26px;
+  }
+
+  .headerContent {
+    gap: 10px;
+  }
+
+  .shopIcon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 17px;
+  }
+
+  .shopIcon span {
+    font-size: 29px;
+  }
+
+  .shopInfo h1 {
+    font-size: 20px;
+  }
+
+  .shopInfo p {
+    margin-top: 5px;
+
+    font-size: 11px;
+  }
+
+  .updatedBadge {
+    padding: 6px 8px;
+  }
+
+  .updatedBadge span {
+    font-size: 9px;
+  }
+
+  .updatedBadge small {
+    font-size: 8px;
+  }
+
+  .headerAccent {
+    bottom: 18px;
+
+    width: 38px;
+  }
+
+    .headerAccentContainer {
+    bottom: 17px;
+
+    gap: 10px;
+  }
+
+  .headerAccent {
+    width: 28px;
+    height: 2px;
+  }
+
+  .headerAccentContainer span {
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+}
+
+
+
+/* ==============================
+   VERY SMALL PHONES
+============================== */
+
+@media (max-width: 360px) {
+
+  .header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .shopIcon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 15px;
+  }
+
+  .shopInfo h1 {
+    font-size: 18px;
+  }
+
+  .shopInfo p {
+    font-size: 10px;
+  }
+
+  .updatedBadge {
+    padding: 5px 7px;
+  }
+
+  .updatedBadge span {
+    font-size: 8px;
+  }
+
+  .updatedBadge small {
+    font-size: 7px;
+  }
+
+  
+}
+/* ==============================
+   STICKY SHOP AREA
+============================== */
+
+.stickyArea {
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+
+  background: #f6f8f6;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* .stickyControls {
+  position: sticky;
+  top: 152px;
+  z-index: 110;
+} */
+
+/* =========================
+   PAYMENT BUTTON
+========================= */
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.paymentButton {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  padding: 9px 13px;
+
+  border-radius: 12px;
+
+  background: #fc6d11;
+
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.paymentButton:hover {
+  background: linear-gradient(135deg, #fc6d11, #d94a00);
+
+  transform: translateY(-1px);
+}
+
+.paymentButton:active {
+  transform: scale(0.96);
+}
+
+
+
+
+/* =========================
+   PAYMENT OVERLAY
+========================= */
+
+.paymentOverlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    background: rgba(8, 25, 15, 0.58);
+
+    backdrop-filter: blur(5px);
+
+    animation: paymentOverlayIn 0.2s ease;
+}
+
+
+/* =========================
+   PAYMENT SHEET
+========================= */
+
+.paymentSheet {
+    width: min(680px, 100%);
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 12px 20px 24px;
+
+    background: #ffffff;
+
+    border-radius: 24px 24px 0 0;
+
+    box-shadow:
+        0 -10px 40px rgba(0, 0, 0, 0.2);
+
+    animation: paymentSheetIn 0.28s ease;
+}
+
+
+/* Drag handle */
+
+.paymentHandle {
+    width: 42px;
+    height: 5px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 999px;
+
+    background: #d5ddd8;
+}
+
+
+/* =========================
+   PAYMENT HEADER
+========================= */
+
+.paymentHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+.paymentHeader h2 {
+    margin: 0;
+
+    color: #14562e;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.paymentHeader p {
+    margin: 5px 0 0;
+
+    color: #748078;
+
+    font-size: 13px;
+}
+
+
+.closePaymentButton {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #eaf7ef;
+    color: #14562e;
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.closePaymentButton:hover {
+    background: #dcefe3;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================
+   PAYMENT NOTICE
+========================= */
+
+.paymentNotice {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 18px;
+    padding: 13px 15px;
+
+    border-radius: 14px;
+
+    background: #ffdcdc6a;
+
+    border: 1px solid rgba(252, 109, 17, 0.15);
+
+  
+}
+
+
+.paymentNotice span {
+    flex-shrink: 0;
+
+    font-size: 18px;
+}
+
+.paymentNotice p {
+    margin: 0;
+
+    color: #33443a;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   PAYMENT CARDS
+========================= */
+
+.paymentMethods {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.paymentCard {
+    display: flex;
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid #e1e8e3;
+    border-radius: 16px;
+
+    background: #fbfdfb;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.paymentCard:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(20, 86, 46, 0.25);
+
+    box-shadow:
+        0 8px 24px rgba(20, 86, 46, 0.08);
+}
+
+
+.bankIcon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eaf7ef;
+
+    font-size: 20px;
+}
+
+
+.paymentInfo {
+    min-width: 0;
+
+    flex: 1;
+}
+
+.paymentInfo h3 {
+    margin: 0;
+
+    color: #18251d;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.paymentInfo > span {
+    display: inline-block;
+
+    margin-top: 3px;
+
+    color: #088239;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.paymentInfo p {
+    margin: 10px 0 7px;
+
+    color: #748078;
+
+    font-size: 11px;
+}
+
+.paymentInfo strong {
+    color: #33443a;
+}
+
+
+/* =========================
+   ACCOUNT NUMBER
+========================= */
+
+.accountRow {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px;
+
+    border-radius: 10px;
+
+    background: #eaf7ef;
+}
+
+.accountRow span {
+    min-width: 0;
+
+    flex: 1;
+
+    overflow: hidden;
+
+    color: #14562e;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.accountRow button {
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 7px;
+
+    padding: 6px 9px;
+
+    background: #14562e;
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.accountRow button:hover {
+    background: #088239;
+}
+
+
+/* =========================
+   DONE BUTTON
+========================= */
+
+.donePaymentButton {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: #14562e;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.donePaymentButton:hover {
+    background: #088239;
+}
+
+.donePaymentButton:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes paymentOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes paymentSheetIn {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .headerActions {
+        gap: 8px;
+    }
+
+    .paymentButton {
+        padding: 8px 12px;
+
+        font-size: 12px;
+    }
+
+    .paymentSheet {
+        max-height: 92vh;
+
+        padding: 10px 15px 20px;
+
+        border-radius: 22px 22px 0 0;
+    }
+
+    .paymentHeader h2 {
+        font-size: 20px;
+    }
+
+    .paymentMethods {
+        grid-template-columns: 1fr;
+    }
+
+    .paymentCard {
+        padding: 13px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 360px) {
+
+    .headerActions {
+        flex-wrap: wrap;
+    }
+
+    .paymentSheet {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .paymentInfo h3 {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .paymentOverlay,
+    .paymentSheet {
+        animation: none;
+    }
+
+    .paymentButton,
+    .paymentCard,
+    .closePaymentButton,
+    .donePaymentButton {
+        transition: none;
+    }
+}
+/* =========================
+   NO PAYMENT METHODS
+========================= */
+
+.noPaymentMethods {
+  grid-column: 1 / -1;
+
+  padding: 35px 20px;
+
+  text-align: center;
+
+  border: 1px dashed #d5dfd8;
+  border-radius: 16px;
+
+  background: #f8faf8;
+}
+
+.noPaymentMethods span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 30px;
+}
+
+.noPaymentMethods p {
+  margin: 0;
+
+  color: #748078;
+
+  font-size: 13px;
+}
+
+
