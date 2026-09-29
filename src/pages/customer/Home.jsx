@@ -165,9 +165,9 @@ function Home() {
             {/* SHOP LOGO */}
             <div className={styles.shopIcon}>
               {shop?.logo ? (
-                <img src={shop.logo} alt={shop.name} />
+                <img src={shop.logo} alt={shop.name || "Shop logo"} />
               ) : (
-                <img src={image} alt={shop.name} />
+                <img src={image} alt={shop.name || "Shop logo"} />
               )}
             </div>
 
