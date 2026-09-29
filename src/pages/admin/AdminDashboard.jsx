@@ -14,8 +14,8 @@ function ProductImage({ product }) {
   return (
     <img
       className={styles.adminProductImage}
-      src={product.image}
-      alt={product.name}
+      src={product?.image}
+      alt={product?.name || "Product"}
       onError={() => setImageError(true)}
     />
   );

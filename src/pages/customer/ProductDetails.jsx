@@ -134,7 +134,7 @@ function ProductDetails() {
 
         <div className={styles.detailsImage}>
           {productImageUrl ? (
-            <img src={productImageUrl} alt={product.name} />
+            <img src={productImageUrl} alt={product?.name || "Product"} />
           ) : (
             <span>🛍️</span>
           )}

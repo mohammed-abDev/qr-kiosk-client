@@ -165,9 +165,9 @@ function Home() {
             {/* SHOP LOGO */}
             <div className={styles.shopIcon}>
               {shop?.logo ? (
-                <img src={shop.logo} alt={shop.name || "Shop logo"} />
+                <img src={shop.logo} alt={shop?.name || "Shop logo"} />
               ) : (
-                <img src={image} alt={shop.name || "Shop logo"} />
+                <img src={image} alt={shop?.name || "Shop logo"} />
               )}
             </div>
 
@@ -307,8 +307,11 @@ function Home() {
                         : "none",
                     }}
                   >
-                    {product.image ? (
-                      <img src={product.image} alt={product.name} />
+                    {product?.image ? (
+                      <img
+                        src={product.image}
+                        alt={product?.name || "Product"}
+                      />
                     ) : (
                       <span>🛍️</span>
                     )}

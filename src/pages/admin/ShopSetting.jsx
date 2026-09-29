@@ -38,7 +38,7 @@ function ShopSettings() {
         setShopName(data.name || "");
 
         if (data.logo) {
-          setLogoPreview(`${API_URL}${data.logo}`);
+          setLogoPreview(data.logo);
         }
 
         setLoading(false);
