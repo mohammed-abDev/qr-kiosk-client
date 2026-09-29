@@ -164,7 +164,7 @@ function Home() {
             {/* SHOP LOGO */}
             <div className={styles.shopIcon}>
               {shop?.logo ? (
-                <img src={`${API_URL}${shop.logo}`} alt={shop.name} />
+                <img src={shop.logo} alt={shop.name} />
               ) : (
                 <span>🏪</span>
               )}
@@ -308,7 +308,7 @@ function Home() {
                   >
                     {product.image ? (
                       <img
-                        src={`${API_URL}${product.image}`}
+                        src={product.image}
                         alt={product.name}
                       />
                     ) : (

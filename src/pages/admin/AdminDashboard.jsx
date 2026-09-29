@@ -14,7 +14,7 @@ function ProductImage({ product }) {
   return (
     <img
       className={styles.adminProductImage}
-      src={`${API_URL}${product.image}`}
+      src={product.image}
       alt={product.name}
       onError={() => setImageError(true)}
     />

@@ -44,10 +44,6 @@
 
   padding: 70px 20px 30px;
 
-  /*
-    The actual product image is supplied from JSX
-    through the --product-image CSS variable.
-  */
 
   background:
     #c9d5cc;
