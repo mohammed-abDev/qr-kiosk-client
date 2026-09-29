@@ -100,9 +100,7 @@ function ProductDetails() {
   // PRODUCT IMAGE URL
   // ==============================
 
-  const productImageUrl = product.image
-    ? `${API_URL}${product.image}`
-    : null;
+  const productImageUrl = product.image || null;
 
   // ==============================
   // PRODUCT DETAILS

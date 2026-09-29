@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "./Home.module.css";
 import PageLoader from "../../components/common/PageLoader";
+import image from "../../assets/shoping-logo.png";
 import API_URL from "../../config/api";
 
 function Home() {
@@ -166,7 +167,7 @@ function Home() {
               {shop?.logo ? (
                 <img src={shop.logo} alt={shop.name} />
               ) : (
-                <span>🏪</span>
+                <img src={image} alt={shop.name} />
               )}
             </div>
 
@@ -302,15 +303,12 @@ function Home() {
                     className={styles.productImage}
                     style={{
                       "--product-bg": product.image
-                        ? `url(${API_URL}${product.image})`
+                        ? `url(${product.image})`
                         : "none",
                     }}
                   >
                     {product.image ? (
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                      />
+                      <img src={product.image} alt={product.name} />
                     ) : (
                       <span>🛍️</span>
                     )}
@@ -354,14 +352,14 @@ function Home() {
 
         <div className={styles.footerBottom}>
           © {new Date().getFullYear()} {shop?.name || "Our Shop"}
-          <span>  |  </span>
+          <span> | </span>
           <button
             className={styles.footerAdminbtn}
             onClick={() => navigate("/admin")}
             type="button"
           >
             {" "}
-              Admin Panel
+            Admin Panel
           </button>
         </div>
       </footer>
