@@ -1061,7 +1061,7 @@
   background: none;
   border: none;
   color: #fc6d11;
-  
+
 }
 
 
@@ -1267,13 +1267,12 @@
   margin: 7px 0 0;
 
   font-size: 12px;
-  font-weight: 500;
 
-  color: rgba(255, 255, 255, 0.78);
+  color: #b9c0c4;
 
   letter-spacing: 0.2px;
-}
 
+}
 
 /* ==============================
    UPDATED BADGE
@@ -2041,5 +2040,4 @@
 
   font-size: 13px;
 }
-
 

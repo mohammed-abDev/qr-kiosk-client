@@ -116,6 +116,12 @@
   display: flex;
   align-items: center;
   gap: 13px;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+.adminBrand:hover {
+  opacity: 0.8;
 }
 
 .adminBrandIcon {

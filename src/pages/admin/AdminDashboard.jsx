@@ -345,16 +345,23 @@ function AdminDashboard({ onLogout }) {
       ========================= */}
 
       <header className={styles.adminHeader}>
-        <div className={styles.adminBrand}>
+        <div
+          className={styles.adminBrand}
+          onClick={() => navigate("/")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              navigate("/");
+            }
+          }}
+        >
           <div className={styles.adminBrandIcon}>
             <img src={image} alt="Shop Logo" />
           </div>
 
-          {/* <div className={styles.adminBrandIcon}>🏪</div> */}
-
           <div>
             <h1>Abdu Mart</h1>
-
             <p>Admin Dashboard</p>
           </div>
         </div>
@@ -469,9 +476,7 @@ function AdminDashboard({ onLogout }) {
           >
             <span>🏦</span>
             <div>
-              <strong>
-                Payment Methods
-              </strong>
+              <strong>Payment Methods</strong>
 
               <small>Manage Payment Methods</small>
             </div>

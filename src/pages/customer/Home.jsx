@@ -175,7 +175,7 @@ function Home() {
             <div className={styles.shopInfo}>
               <h1>{shop ? shop.name : "Loading..."}</h1>
 
-              <p>DEGITAL MENU</p>
+              <p>DEGITAL SHELF</p>
             </div>
 
             {/* UPDATED BADGE */}
