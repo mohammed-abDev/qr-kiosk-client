@@ -2,11 +2,20 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "./Home.module.css";
 import PageLoader from "../../components/common/PageLoader";
+import PromoCarousel from "../../components/Carousel/PromoCarousel";
 import image from "../../assets/shoping-logo.png";
 import API_URL from "../../config/api";
 
 function Home() {
   const navigate = useNavigate();
+
+  //smooth scrol
+  const handleHome = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   // SHOP
   const [shop, setShop] = useState(null);
@@ -214,6 +223,9 @@ function Home() {
             />
           </div>
 
+          {/* PROMOTIONAL CAROUSEL */}
+          <PromoCarousel />
+
           {/* CATEGORIES */}
 
           <div className={styles.categories}>
@@ -348,24 +360,6 @@ function Home() {
           </section>
         )}
       </main>
-      {/* FOOTER */}
-
-      <footer className={styles.footer}>
-        <p className={styles.footerThankYou}>Thank you for visiting ❤️ </p>
-
-        <div className={styles.footerBottom}>
-          © {new Date().getFullYear()} {shop?.name || "Our Shop"}
-          <span> | </span>
-          <button
-            className={styles.footerAdminbtn}
-            onClick={() => navigate("/admin")}
-            type="button"
-          >
-            {" "}
-            Admin Panel
-          </button>
-        </div>
-      </footer>
 
       {showPayment && (
         <div
@@ -452,6 +446,35 @@ function Home() {
           </div>
         </div>
       )}
+      {/* BOTTOM NAVIGATION */}
+      <nav className={styles.bottomNav}>
+        <button
+          type="button"
+          className={`${styles.bottomNavItem} ${styles.activeNavItem}`}
+          onClick={handleHome}
+        >
+          <span className={styles.bottomNavIcon}>⌂</span>
+          <span>Home</span>
+        </button>
+
+        <button
+          type="button"
+          className={styles.bottomNavItem}
+          onClick={() => navigate("/categories")}
+        >
+          <span className={styles.bottomNavIcon}>▦</span>
+          <span>Categories</span>
+        </button>
+
+        <button
+          type="button"
+          className={styles.bottomNavItem}
+          onClick={() => navigate("/more")}
+        >
+          <span className={styles.bottomNavIcon}>⋯</span>
+          <span>More</span>
+        </button>
+      </nav>
     </div>
   );
 }

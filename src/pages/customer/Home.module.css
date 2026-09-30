@@ -60,6 +60,7 @@
 
   padding: 20px 15px 40px;
   border-radius: 30px;
+  margin-bottom: 50px;
 }
 
 
@@ -959,145 +960,6 @@
   }
 }
 
-/* ==============================
-   FOOTER
-============================== */
-
-.footer {
-  margin-top: 40px;
-  padding: 20px 20px 18px;
-  background: linear-gradient(
-    135deg,
-    #14562e 0%,
-    #176b39 55%,
-    #088239 100%
-  );
-  color: white;
-  text-align: center;
-}
-
-.footerShop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.footerLogo {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.footerLogo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.footerLogo span {
-  font-size: 26px;
-}
-
-.footerShop h2 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.footerShop p {
-  margin: 4px 0 0;
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-.footerStatus {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-
-  margin-top: 20px;
-  padding: 7px 14px;
-
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.statusDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #7cff9b;
-  box-shadow: 0 0 8px rgba(124, 255, 155, 0.7);
-}
-
-.footerThankYou {
-  margin: 18px 0;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.footerBottom {
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-
-  font-size: 12px;
-  opacity: 0.65;
-}
-
-.footerAdminbtn{
-  background: none;
-  border: none;
-  color: #fc6d11;
-
-}
-
-
-/* ==============================
-   FOOTER - MOBILE
-============================== */
-
-@media (max-width: 480px) {
-  .footer {
-    margin-top: 32px;
-    padding: 28px 16px 16px;
-  }
-
-  .footerShop {
-    gap: 10px;
-  }
-
-  .footerLogo {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-  }
-
-  .footerLogo span {
-    font-size: 22px;
-  }
-
-  .footerShop h2 {
-    font-size: 16px;
-  }
-
-  .footerShop p {
-    font-size: 12px;
-  }
-}
-
 
 /* ==============================
    SHOP HEADER
@@ -1385,7 +1247,7 @@
   .header {
     min-height: 100px;
 
-    padding: 27px 15px 65px;
+    padding: 25px 15px 25px;
 
     border-radius: 0 0 26px 26px;
   }
@@ -2041,3 +1903,101 @@
   font-size: 13px;
 }
 
+/* =========================
+   MOBILE BOTTOM NAVIGATION
+========================= */
+
+.bottomNav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  z-index: 1000;
+
+  width: 100%;
+
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 6px 18px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-top: 1px solid #eeeeee;
+
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.06);
+
+  backdrop-filter: blur(14px);
+}
+
+.bottomNavItem {
+  position: relative;
+
+  min-width: 75px;
+  height: 56px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  border: none;
+  background: transparent;
+
+  color: #8a8a8a;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.bottomNavItem:active {
+  transform: scale(0.94);
+}
+
+.bottomNavIcon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  font-size: 22px;
+  line-height: 1;
+}
+
+.activeNavItem {
+  color: #088239;
+}
+
+.activeNavItem .bottomNavIcon {
+  background: #e9f5ed;
+
+  color: #088239;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 768px) {
+  .bottomNav {
+    /* display: none; */
+    max-width: 100%;
+  }
+}

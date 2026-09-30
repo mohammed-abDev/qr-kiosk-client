@@ -1,0 +1,316 @@
+/* =========================
+   PAGE
+========================= */
+
+.page {
+  min-height: 100vh;
+
+  padding: 20px 16px 100px;
+
+  background: #fafbf9;
+
+  color: #1d1d1d;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 700px;
+  margin: 0 auto 24px;
+}
+
+.header h1 {
+  margin: 0;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  color: #14562e;
+}
+
+.header p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+.homeButton {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #eeeeee;
+  border-radius: 14px;
+
+  background: white;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.homeButton:active {
+  transform: scale(0.94);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* =========================
+   CATEGORY CARD
+========================= */
+
+.categoryCard {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 14px;
+
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.035);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.categoryCard:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .categoryCard:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+  }
+}
+
+/* =========================
+   CATEGORY ICON
+========================= */
+
+.categoryIcon {
+  flex-shrink: 0;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #eef7f0;
+
+  font-size: 25px;
+}
+
+/* =========================
+   CATEGORY INFO
+========================= */
+
+.categoryCard div:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+}
+
+.categoryCard h2 {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+.categoryCard p {
+  margin: 4px 0 0;
+
+  font-size: 12px;
+
+  color: #888;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.categoryCard > span {
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #fff3e9;
+
+  color: #fc6d11;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
+.bottomNav {
+  position: fixed;
+
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  z-index: 1000;
+
+  width: 100%;
+  max-width: 520px;
+
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 6px 18px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-top: 1px solid #eeeeee;
+
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.06);
+
+  backdrop-filter: blur(14px);
+}
+
+.bottomNavItem {
+  min-width: 75px;
+  height: 56px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #888;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.bottomNavItem:active {
+  transform: scale(0.93);
+}
+
+.bottomNavItem span {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  font-size: 21px;
+}
+
+.bottomNavItem small {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ACTIVE */
+
+.active {
+  color: #088239;
+}
+
+.active span {
+  background: #e9f5ed;
+
+  color: #088239;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 768px) {
+  .page {
+    padding: 30px 24px;
+  }
+
+  .bottomNav {
+    display: none;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
