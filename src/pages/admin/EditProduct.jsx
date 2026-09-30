@@ -59,7 +59,9 @@ function EditProduct() {
         setIsAvailable(Boolean(data.is_available));
 
         if (data.image) {
-          setImagePreview(`${API_URL}${data.image}`);
+          setImagePreview(data.image);
+        } else {
+          setImagePreview("");
         }
       })
       .catch((error) => {
@@ -204,10 +206,6 @@ function EditProduct() {
           return data;
         });
       })
-      // .then(() => {
-      //   alert("Product updated successfully!");
-      //   navigate("/admin");
-      // })
 
       .then(() => {
         setNotification({
@@ -315,7 +313,7 @@ function EditProduct() {
 
               <div className={styles.productImagePreview}>
                 {imagePreview ? (
-                  <img src={imagePreview} alt={name} />
+                  <img src={imagePreview} alt={name || "Product"} />
                 ) : (
                   <span>📦</span>
                 )}
