@@ -21,26 +21,40 @@
 .backAdminButton {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 7px;
 
-  border: none;
-  background: transparent;
+  min-height: 44px;
+  padding: 0 16px;
 
+  border: 1px solid #f9cfb6;
+  border-radius: 11px;
+
+  background: #ffffff;
   color: #14562e;
-  font-size: 15px;
+
+  font-size: 14px;
   font-weight: 700;
 
   cursor: pointer;
 
-  padding: 8px 0;
-  margin-bottom: 15px;
+  box-shadow: 0 3px 10px rgba(20, 86, 46, 0.06);
 
-  transition: 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .backAdminButton:hover {
-  color: #088239;
-  transform: translateX(-3px);
+  background: #f0f7f2;
+  transform: translateY(-1px);
+
+  box-shadow: 0 5px 14px rgba(20, 86, 46, 0.1);
+}
+
+.backAdminButton:active {
+  transform: scale(0.97);
 }
 
 /* =========================================
