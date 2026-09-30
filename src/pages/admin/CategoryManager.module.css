@@ -686,10 +686,6 @@ success notification
     border-radius: 16px;
   }
 
-  .modalActions {
-    flex-direction: column-reverse;
-  }
-
   .cancelModalButton,
   .confirmDeleteButton {
     width: 100%;

@@ -66,7 +66,7 @@ function CategoryManager() {
     setLoading(true);
 
     const url = editingId
-      ? `${API_URL}0/api/categories/${editingId}`
+      ? `${API_URL}/api/categories/${editingId}`
       : `${API_URL}/api/categories`;
 
     const method = editingId ? "PUT" : "POST";
