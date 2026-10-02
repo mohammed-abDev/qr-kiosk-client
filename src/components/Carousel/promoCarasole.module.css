@@ -1,255 +1,99 @@
 .carousel {
-  position: relative;
-
   width: 100%;
-
-  margin-top: 18px;
-  margin-bottom: 18px;
-
-
-  overflow: hidden;
-
-  border-radius: 24px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #14562e 0%,
-      #088239 100%
-    );
-
-  min-height: 180px;
-
-  box-shadow:
-    0 10px 25px rgba(8, 130, 57, 0.16);
+  margin: 14px 0 20px;
 }
 
-/* =========================
-   SLIDE
-========================= */
+.slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1200 / 500;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f3f3f3;
+}
 
 .slide {
-  min-height: 180px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 25px 24px;
-
-  animation: slideIn 0.35s ease;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.slide.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-/* =========================
-   CONTENT
-========================= */
-
-.content {
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 65%;
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
-
-.badge {
-  display: inline-block;
-
-  margin-bottom: 8px;
-
-  padding: 5px 9px;
-
-  border-radius: 8px;
-
-  background: rgba(255, 255, 255, 0.15);
-
-  color: #ffffff;
-
-  font-size: 9px;
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.5px;
-}
-
-.content h2 {
-  margin: 0;
-
-  color: #ffffff;
-
-  font-size: 23px;
-  font-weight: 800;
-
-  line-height: 1.15;
-}
-
-.content p {
-  margin: 7px 0 14px;
-
-  color: rgba(255, 255, 255, 0.78);
-
-  font-size: 11px;
-
-  line-height: 1.5;
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.button {
-  display: inline-flex;
-  align-items: center;
-
-  gap: 8px;
-
-  padding: 9px 13px;
-
-  border: none;
-
-  border-radius: 10px;
-
-  background: #ffffff;
-
-  color: #14562e;
-
-  font-size: 11px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.button span {
-  color: #fc6d11;
-
-  font-size: 15px;
-}
-
-.button:active {
-  transform: scale(0.95);
-}
-
-/* =========================
-   VISUAL
-========================= */
-
-.visual {
-  width: 120px;
-  height: 120px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.1);
-
-  flex-shrink: 0;
-}
-
-.visualIcon {
-  font-size: 58px;
-
-  transform: rotate(-8deg);
-}
-
-/* =========================
-   ARROWS
-========================= */
 
 .arrow {
   position: absolute;
-
   top: 50%;
+  transform: translateY(-50%);
 
-  z-index: 5;
-
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  transform: translateY(-50%);
-
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
+  border: none;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.12);
-
-  color: #ffffff;
-
-  font-size: 25px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #14562e;
 
   cursor: pointer;
 
-  backdrop-filter: blur(5px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 
   transition:
     background 0.2s ease,
     transform 0.2s ease;
 }
 
-.arrow:active {
-  transform: translateY(-50%) scale(0.9);
+.arrow:hover {
+  background: #ffffff;
 }
 
-.left {
-  left: 8px;
+.arrow svg {
+  width: 20px;
+  height: 20px;
 }
 
-.right {
-  right: 8px;
+.previous {
+  left: 12px;
 }
 
-/* =========================
-   DOTS
-========================= */
+.next {
+  right: 12px;
+}
 
 .dots {
-  position: absolute;
-
-  bottom: 10px;
-  left: 50%;
-
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
 
-  gap: 5px;
-
-  transform: translateX(-50%);
+  margin-top: 10px;
 }
 
 .dot {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
 
   padding: 0;
-
   border: none;
-
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.4);
+  background: #c8c8c8;
 
   cursor: pointer;
 
@@ -259,38 +103,37 @@
 }
 
 .activeDot {
-  width: 16px;
-
-  border-radius: 5px;
-
-  background: #ffffff;
+  width: 20px;
+  border-radius: 10px;
+  background: #fc6d11;
 }
 
-/* =========================
-   DESKTOP
-========================= */
-
-@media (min-width: 600px) {
+/* Mobile */
+@media (max-width: 600px) {
   .carousel {
-    min-height: 210px;
+    margin: 10px 0 18px;
   }
 
-  .slide {
-    min-height: 210px;
-
-    padding: 30px 35px;
+  .slider {
+    aspect-ratio: 16 / 7;
+    border-radius: 12px;
   }
 
-  .content h2 {
-    font-size: 28px;
+  .arrow {
+    width: 30px;
+    height: 30px;
   }
 
-  .visual {
-    width: 145px;
-    height: 145px;
+  .arrow svg {
+    width: 17px;
+    height: 17px;
   }
 
-  .visualIcon {
-    font-size: 70px;
+  .previous {
+    left: 8px;
+  }
+
+  .next {
+    right: 8px;
   }
 }

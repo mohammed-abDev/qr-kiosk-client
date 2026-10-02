@@ -1,0 +1,647 @@
+/* =========================================
+   BANNER MANAGER PAGE
+========================================= */
+
+.bannerManagerPage {
+  min-height: 100vh;
+  background: #f4f8f5;
+  padding: 30px 20px 60px;
+}
+
+.bannerManagerContainer {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   BACK
+========================================= */
+
+.backAdminButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 44px;
+  padding: 0 16px;
+
+  border: 1px solid #f9cfb6;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #14562e;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 10px rgba(20, 86, 46, 0.06);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.backAdminButton:hover {
+  background: #f0f7f2;
+  transform: translateY(-1px);
+
+  box-shadow: 0 5px 14px rgba(20, 86, 46, 0.1);
+}
+
+.backAdminButton:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.bannerManagerHeader {
+  margin-bottom: 25px;
+  margin-top: 22px;
+}
+
+.bannerManagerHeader h1 {
+  margin: 0 0 7px;
+
+  color: #14562e;
+
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.bannerManagerHeader p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   NOTIFICATIONS
+========================================= */
+
+.adminNotification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  min-width: 280px;
+  max-width: 400px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 18px;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.adminNotification span {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-weight: 800;
+}
+
+.adminNotification p {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.success {
+  border-left: 4px solid #2cb95d;
+  color: #16843d;
+}
+
+.success span {
+  background: #eaf8ef;
+  color: #2cb95d;
+}
+
+.error {
+  border-left: 4px solid #dc3545;
+  color: #b4232f;
+}
+
+.error span {
+  background: #fdecec;
+  color: #dc3545;
+}
+
+
+/* =========================================
+   UPLOAD FORM CARD
+========================================= */
+
+.bannerFormCard {
+  background: #ffffff;
+
+  border: 1px solid #e3ebe5;
+  border-radius: 18px;
+
+  padding: 28px;
+  margin-bottom: 25px;
+
+  box-shadow:
+    0 8px 30px rgba(20, 86, 46, 0.07);
+}
+
+.bannerFormCard h2 {
+  margin: 0 0 22px;
+
+  color: #14562e;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   UPLOAD AREA
+========================================= */
+
+.uploadArea {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1200 / 500;
+
+  box-sizing: border-box;
+
+  border: 2px dashed #d7e1da;
+  border-radius: 14px;
+
+  background: #fafcfb;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.uploadArea:hover {
+  border-color: #088239;
+  background: #f7fbf8;
+}
+
+.uploadPlaceholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+.uploadIcon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 3px;
+
+  border-radius: 50%;
+
+  background: #e9f6ee;
+  color: #088239;
+
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.uploadPlaceholder strong {
+  color: #26352c;
+
+  font-size: 15px;
+}
+
+.uploadPlaceholder span {
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================
+   SELECTED FILE
+========================================= */
+
+.selectedFile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 15px;
+  padding: 12px 14px;
+
+  border: 1px solid #e3ebe5;
+  border-radius: 10px;
+
+  background: #f8faf9;
+}
+
+.selectedFile div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.selectedFile strong {
+  overflow: hidden;
+
+  color: #26352c;
+
+  font-size: 13px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selectedFile span {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.selectedFile button {
+  flex-shrink: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 8px 12px;
+
+  background: #fff0f0;
+  color: #d92d20;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.selectedFile button:hover {
+  background: #ffe0e0;
+}
+
+
+/* =========================================
+   SAVE BUTTON
+========================================= */
+
+.saveButton {
+  width: 100%;
+
+  margin-top: 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 13px 18px;
+
+  background: #14562e;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: #088239;
+
+  transform: translateY(-1px);
+}
+
+.saveButton:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   BANNER LIST CARD
+========================================= */
+
+.bannerListCard {
+  background: #ffffff;
+
+  border: 1px solid #e3ebe5;
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 30px rgba(20, 86, 46, 0.07);
+}
+
+
+/* =========================================
+   LIST HEADER
+========================================= */
+
+.bannerListHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 25px;
+
+  border-bottom: 1px solid #e7eee9;
+}
+
+.bannerListHeader h2 {
+  margin: 0;
+
+  color: #14562e;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.bannerListHeader span {
+  min-width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 8px;
+
+  border-radius: 20px;
+
+  background: #e9f6ee;
+  color: #088239;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   BANNER LIST
+========================================= */
+
+.bannerList {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================
+   BANNER ITEM
+========================================= */
+
+.bannerItem {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 18px 25px;
+
+  border-bottom: 1px solid #edf1ee;
+
+  transition: background 0.2s ease;
+}
+
+.bannerItem:last-child {
+  border-bottom: none;
+}
+
+.bannerItem:hover {
+  background: #fafcfb;
+}
+
+
+/* =========================================
+   BANNER IMAGE
+========================================= */
+
+.bannerImageWrapper {
+  width: 180px;
+
+  flex-shrink: 0;
+
+  aspect-ratio: 1200 / 500;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #f3f5f4;
+}
+
+.bannerImageWrapper img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================
+   BANNER INFO
+========================================= */
+
+.bannerItemInfo {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.bannerItemInfo h3 {
+  margin: 0 0 5px;
+
+  color: #1f2937;
+
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.bannerItemInfo p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.bannerStatus {
+  flex-shrink: 0;
+}
+
+.active,
+.inactive {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.active {
+  background: #e9f6ee;
+  color: #088239;
+}
+
+.inactive {
+  background: #f1f3f5;
+  color: #6b7280;
+}
+
+
+/* =========================================
+   EMPTY / LOADING
+========================================= */
+
+.message {
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .bannerManagerPage {
+    padding: 18px 12px 40px;
+  }
+
+  .bannerManagerHeader h1 {
+    font-size: 25px;
+  }
+
+  .bannerFormCard {
+    padding: 20px 17px;
+    border-radius: 15px;
+  }
+
+  .bannerListHeader {
+    padding: 17px 18px;
+  }
+
+  .bannerItem {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding: 18px;
+  }
+
+  .bannerImageWrapper {
+    width: 100%;
+  }
+
+  .bannerItemInfo {
+    width: 100%;
+  }
+
+  .bannerStatus {
+    width: 100%;
+  }
+
+  .active,
+  .inactive {
+    width: 100%;
+  }
+
+  .adminNotification {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+
+    min-width: auto;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .backAdminButton,
+  .uploadArea,
+  .saveButton,
+  .selectedFile button,
+  .bannerItem {
+    transition: none;
+  }
+}

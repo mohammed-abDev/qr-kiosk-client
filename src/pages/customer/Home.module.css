@@ -1904,7 +1904,7 @@
 }
 
 /* =========================
-   MOBILE BOTTOM NAVIGATION
+  BOTTOM NAVIGATION
 ========================= */
 
 .bottomNav {
@@ -1926,7 +1926,7 @@
 
   padding: 6px 18px;
 
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--white);
 
   border-top: 1px solid #eeeeee;
 
@@ -1986,6 +1986,12 @@
 }
 
 .activeNavItem .bottomNavIcon {
+  background: #e9f5ed;
+
+  color: #088239;
+
+}
+.activeNavItem:hover, .bottomNavIcon:hover {
   background: #e9f5ed;
 
   color: #088239;

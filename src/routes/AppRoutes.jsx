@@ -6,6 +6,7 @@ import AdminRoutes from "./AdminRoutes";
 import PageNotFound from "../components/common/PageNotFound"
 import Categories from "../pages/Categories/Categories";
 import More from "../pages/More/More";
+import BannerManager from "../components/BannerManager/BannerManager";
 
 function AppRoutes() {
   return (
@@ -23,9 +24,12 @@ function AppRoutes() {
 
       {/* categoris */}
       <Route path="/categories" element={<Categories />} />
-      
+
       {/* More */}
       <Route path="/more" element={<More />} />
+
+      {/*Banner  */}
+      <Route path="/admin/banners" element={<BannerManager />} />
     </Routes>
   );
 }

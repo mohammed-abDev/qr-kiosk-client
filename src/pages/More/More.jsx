@@ -120,7 +120,7 @@ function More() {
 
               <div className={styles.infoRow}>
                 <span>Location</span>
-                <strong>Adama, Ethiopia</strong>
+                <strong>ChefaRobit, Ethiopia</strong>
               </div>
 
               <div className={styles.infoRow}>

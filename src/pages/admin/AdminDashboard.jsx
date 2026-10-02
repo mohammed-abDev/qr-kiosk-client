@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styles from "./AdminDashboard.module.css";
 import image from "../../assets/shoping-logo.png";
+import BannerManager from "../../components/BannerManager/BannerManager";
 import API_URL from "../../config/api";
 
 function ProductImage({ product }) {
@@ -23,9 +24,17 @@ function ProductImage({ product }) {
 
 function AdminDashboard({ onLogout }) {
   const navigate = useNavigate();
+  //smooth scrol
+  const handleHome = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [showBannerManager, setShowBannerManager] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
@@ -481,6 +490,18 @@ function AdminDashboard({ onLogout }) {
               <small>Manage Payment Methods</small>
             </div>
           </button>
+
+          <button
+            className={styles.dashboardAction}
+            onClick={() => navigate("/admin/banners")}
+          >
+            <span>🖼️</span>
+
+            <div>
+              <strong>Banner Manager</strong>
+              <small>Manage Home Banners</small>
+            </div>
+          </button>
         </section>
         {/* <PaymentMethods /> */}
         {/* =========================
@@ -760,6 +781,44 @@ function AdminDashboard({ onLogout }) {
           </div>
         </div>
       )}
+      {/* BOTTOM NAVIGATION */}
+      <nav className={styles.bottomNav}>
+        <button
+          type="button"
+          className={`${styles.bottomNavItem} ${styles.activeNavItem}`}
+          onClick={handleHome}
+        >
+          <span className={styles.bottomNavIcon}>⌂</span>
+          <span>Home</span>
+        </button>
+
+        <button
+          type="button"
+          className={styles.bottomNavItem}
+          onClick={() => navigate("/categories")}
+        >
+          <span className={styles.bottomNavIcon}>▦</span>
+          <span>Categories</span>
+        </button>
+
+        <button
+          type="button"
+          className={styles.bottomNavItem}
+          onClick={() => navigate("/admin/shop")}
+        >
+          <span className={styles.bottomNavIcon}>⚙️</span>
+          <span>Shop Settings</span>
+        </button>
+
+        <button
+          type="button"
+          className={styles.bottomNavItem}
+          onClick={() => navigate("/more")}
+        >
+          <span className={styles.bottomNavIcon}>⋯</span>
+          <span>More</span>
+        </button>
+      </nav>
     </div>
   );
 }

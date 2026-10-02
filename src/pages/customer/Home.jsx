@@ -268,6 +268,7 @@ function Home() {
             <h3>Something went wrong</h3>
 
             <p>{error}</p>
+            {/* <p>please check your internet connection</p> */}
 
             <button
               className={styles.retryButton}
