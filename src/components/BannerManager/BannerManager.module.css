@@ -16,7 +16,7 @@
 
 
 /* =========================================
-   BACK
+   BACK BUTTON
 ========================================= */
 
 .backAdminButton {
@@ -64,8 +64,8 @@
 ========================================= */
 
 .bannerManagerHeader {
-  margin-bottom: 25px;
   margin-top: 22px;
+  margin-bottom: 25px;
 }
 
 .bannerManagerHeader h1 {
@@ -83,6 +83,7 @@
   color: #6b7280;
 
   font-size: 15px;
+  line-height: 1.5;
 }
 
 
@@ -120,6 +121,8 @@
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   border-radius: 50%;
 
   font-weight: 800;
@@ -130,6 +133,7 @@
 
   font-size: 14px;
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .success {
@@ -154,7 +158,7 @@
 
 
 /* =========================================
-   UPLOAD FORM CARD
+   FORM CARD
 ========================================= */
 
 .bannerFormCard {
@@ -166,8 +170,7 @@
   padding: 28px;
   margin-bottom: 25px;
 
-  box-shadow:
-    0 8px 30px rgba(20, 86, 46, 0.07);
+  box-shadow: 0 8px 30px rgba(20, 86, 46, 0.07);
 }
 
 .bannerFormCard h2 {
@@ -177,6 +180,92 @@
 
   font-size: 21px;
   font-weight: 800;
+}
+
+
+/* =========================================
+   EDIT HEADER
+========================================= */
+
+.editHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+.editHeader h2 {
+  margin: 0 0 6px;
+}
+
+.editHeader p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.cancelEditButton {
+  flex-shrink: 0;
+
+  min-height: 38px;
+
+  padding: 0 13px;
+
+  border: 1px solid #dfe7e2;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #5f6b64;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cancelEditButton:hover {
+  background: #f6f8f7;
+  border-color: #cfd9d3;
+  color: #26352c;
+}
+
+
+/* =========================================
+   CURRENT EDIT PREVIEW
+========================================= */
+
+.currentBannerPreview {
+  width: 100%;
+
+  aspect-ratio: 1200 / 500;
+
+  margin-bottom: 15px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #f3f5f4;
+}
+
+.currentBannerPreview img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
 }
 
 
@@ -307,6 +396,7 @@
 
 .selectedFile span {
   color: #6b7280;
+
   font-size: 12px;
 }
 
@@ -335,7 +425,7 @@
 
 
 /* =========================================
-   SAVE BUTTON
+   SAVE / UPDATE BUTTON
 ========================================= */
 
 .saveButton {
@@ -356,7 +446,9 @@
 
   cursor: pointer;
 
-  transition: 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .saveButton:hover:not(:disabled) {
@@ -366,7 +458,6 @@
 }
 
 .saveButton:disabled {
-  opacity: 0.65;
 
   cursor: not-allowed;
 }
@@ -384,8 +475,7 @@
 
   overflow: hidden;
 
-  box-shadow:
-    0 8px 30px rgba(20, 86, 46, 0.07);
+  box-shadow: 0 8px 30px rgba(20, 86, 46, 0.07);
 }
 
 
@@ -523,6 +613,7 @@
   color: #6b7280;
 
   font-size: 13px;
+  line-height: 1.4;
 }
 
 
@@ -541,6 +632,8 @@
   align-items: center;
   justify-content: center;
 
+  min-width: 68px;
+
   padding: 6px 10px;
 
   border-radius: 20px;
@@ -557,6 +650,101 @@
 .inactive {
   background: #f1f3f5;
   color: #6b7280;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.bannerActions {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+}
+
+.bannerActions button {
+  min-height: 34px;
+
+  padding: 0 10px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.bannerActions button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.bannerActions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   ACTIVATE / DEACTIVATE
+========================================= */
+
+.statusButton {
+  border: 1px solid #cfe3d5;
+
+  background: #f5faf7;
+  color: #14562e;
+}
+
+.statusButton:hover:not(:disabled) {
+  background: #e9f6ee;
+  border-color: #a9cdb4;
+}
+
+
+/* =========================================
+   EDIT
+========================================= */
+
+.editButton {
+  border: 1px solid #f5d2bd;
+
+  background: #fff8f4;
+  color: #d85b19;
+}
+
+.editButton:hover:not(:disabled) {
+  background: #fff0e7;
+  border-color: #efb997;
+}
+
+
+/* =========================================
+   DELETE
+========================================= */
+
+.deleteButton {
+  border: 1px solid #f2cccc;
+
+  background: #fff7f7;
+  color: #d92d20;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background: #ffeded;
+  border-color: #e7aaaa;
 }
 
 
@@ -579,17 +767,269 @@
    MOBILE
 ========================================= */
 
+@media (max-width: 700px) {
+  .bannerItem {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    padding: 18px;
+  }
+
+  .bannerImageWrapper {
+    width: 150px;
+  }
+
+  .bannerItemInfo {
+    flex: 1;
+  }
+
+  .bannerStatus {
+    margin-left: auto;
+  }
+
+  .bannerActions {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    padding-top: 4px;
+  }
+
+  .bannerActions button {
+    flex: 1;
+  }
+}
+
+/* =========================================
+   DELETE MODAL
+========================================= */
+
+.modalOverlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(20, 30, 24, 0.48);
+
+  backdrop-filter: blur(3px);
+}
+
+.deleteModal {
+  width: 100%;
+  max-width: 400px;
+
+  padding: 30px 28px;
+
+  border: 1px solid #e5ebe7;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.18);
+
+  animation: modalAppear 0.2s ease;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.deleteModalIcon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 17px;
+
+  border-radius: 50%;
+
+  background: #fff0f0;
+  color: #d92d20;
+}
+
+.deleteModalIcon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.deleteModal h2 {
+  margin: 0 0 9px;
+
+  color: #1f2937;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.deleteModal p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.deleteModal p strong {
+  color: #26352c;
+}
+
+.deleteWarning {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #b4232f;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modalActions {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.modalActions button {
+  flex: 1;
+
+  min-height: 42px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.modalActions button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.modalActions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modalCancelButton {
+  border: 1px solid #dfe7e2;
+
+  background: #ffffff;
+  color: #4b5563;
+}
+
+.modalCancelButton:hover:not(:disabled) {
+  background: #f6f8f7;
+  border-color: #cbd6cf;
+}
+
+.modalDeleteButton {
+  border: 1px solid #d92d20;
+
+  background: #d92d20;
+  color: #ffffff;
+}
+
+.modalDeleteButton:hover:not(:disabled) {
+  background: #b4232f;
+}
+
+
+/* =========================================
+   DELETE MODAL MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .modalOverlay {
+    align-items: flex-end;
+
+    padding: 12px;
+  }
+
+  .deleteModal {
+    max-width: none;
+
+    padding: 26px 20px;
+
+    border-radius: 18px;
+  }
+
+  .modalActions {
+    gap: 8px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .deleteModal {
+    animation: none;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
 @media (max-width: 600px) {
   .bannerManagerPage {
     padding: 18px 12px 40px;
+  }
+
+  .bannerManagerHeader {
+    margin-top: 18px;
+    margin-bottom: 20px;
   }
 
   .bannerManagerHeader h1 {
     font-size: 25px;
   }
 
+  .bannerManagerHeader p {
+    font-size: 14px;
+  }
+
   .bannerFormCard {
     padding: 20px 17px;
+
     border-radius: 15px;
   }
 
@@ -598,9 +1038,9 @@
   }
 
   .bannerItem {
-    align-items: flex-start;
-
     flex-direction: column;
+
+    align-items: stretch;
 
     padding: 18px;
   }
@@ -615,10 +1055,47 @@
 
   .bannerStatus {
     width: 100%;
+
+    margin-left: 0;
   }
 
   .active,
   .inactive {
+    width: 100%;
+  }
+
+  .bannerActions {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+  }
+
+  .bannerActions button {
+    width: 100%;
+  }
+
+  .statusButton {
+    grid-column: span 2;
+  }
+
+  .editButton,
+  .deleteButton {
+    min-height: 38px;
+  }
+
+  .editHeader {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+  }
+
+  .cancelEditButton {
     width: 100%;
   }
 
@@ -633,6 +1110,34 @@
 
 
 /* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .bannerManagerPage {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .bannerFormCard {
+    padding: 17px 14px;
+  }
+
+  .bannerActions {
+    grid-template-columns: 1fr;
+  }
+
+  .statusButton {
+    grid-column: auto;
+  }
+
+  .bannerActions button {
+    min-height: 40px;
+  }
+}
+
+
+/* =========================================
    REDUCED MOTION
 ========================================= */
 
@@ -641,7 +1146,9 @@
   .uploadArea,
   .saveButton,
   .selectedFile button,
-  .bannerItem {
+  .bannerItem,
+  .bannerActions button,
+  .cancelEditButton {
     transition: none;
   }
 }
