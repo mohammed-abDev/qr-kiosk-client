@@ -23,6 +23,10 @@ function Home() {
   // PRODUCTS
   const [products, setProducts] = useState([]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const productsPerPage =8 ;
+
   // SEARCH & CATEGORY
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -151,12 +155,31 @@ function Home() {
   });
 
   // ==============================
+  // PAGINATION
+  // ==============================
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  const startIndex = (currentPage - 1) * productsPerPage;
+
+  const currentProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + productsPerPage,
+  );
+
+  // ==============================
   // CLEAR SEARCH
   // ==============================
 
   const clearSearch = () => {
     setSearch("");
   };
+
+  // ==============================
+  // SET CURRENT PAGE
+  // ==============================
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, selectedCategory]);
 
   // ==============================
   // CUSTOMER HOME
@@ -184,7 +207,7 @@ function Home() {
             <div className={styles.shopInfo}>
               <h1>{shop ? shop.name : "Loading..."}</h1>
 
-              <p>DEGITAL SHELF</p>
+              <p>Degital Shelf</p>
             </div>
 
             {/* UPDATED BADGE */}
@@ -263,12 +286,12 @@ function Home() {
 
         {!loading && error && (
           <div className={`${styles.customerState} ${styles.errorState}`}>
-            <div className={styles.errorIcon}>⚠️</div>
+            <div className={styles.errorIcon}>📡</div>
 
             <h3>Something went wrong</h3>
 
             <p>{error}</p>
-            {/* <p>please check your internet connection</p> */}
+            <p>Please check your internet connection and try again.</p>
 
             <button
               className={styles.retryButton}
@@ -304,59 +327,94 @@ function Home() {
                 )}
               </div>
             ) : (
-              filteredProducts.map((product) => (
-                <div
-                  className={styles.productCard}
-                  key={product.id}
-                  onClick={() => navigate(`/product/${product.id}`)}
-                >
-                  {/* IMAGE */}
-
+              <>
+                {currentProducts.map((product) => (
                   <div
-                    className={styles.productImage}
-                    style={{
-                      "--product-bg": product.image
-                        ? `url(${product.image})`
-                        : "none",
-                    }}
+                    className={styles.productCard}
+                    key={product.id}
+                    onClick={() => navigate(`/product/${product.id}`)}
                   >
-                    {product?.image ? (
-                      <img
-                        src={product.image}
-                        alt={product?.name || "Product"}
-                      />
-                    ) : (
-                      <span>🛍️</span>
-                    )}
-                  </div>
+                    {/* IMAGE */}
 
-                  {/* INFORMATION */}
-
-                  <div className={styles.productInfo}>
-                    <div className={styles.productTop}>
-                      <h2>{product.name}</h2>
-
-                      {product.category_name && (
-                        <span className={styles.categoryName}>
-                          {product.category_name}
-                        </span>
-                      )}
-                    </div>
-
-                    {product.description && <p>{product.description}</p>}
-
-                    <div className={styles.productBottom}>
-                      <strong>{Number(product.price).toFixed(2)} Birr</strong>
-
-                      {product.is_available ? (
-                        <span className={styles.available}>Available</span>
+                    <div
+                      className={styles.productImage}
+                      style={{
+                        "--product-bg": product.image
+                          ? `url(${product.image})`
+                          : "none",
+                      }}
+                    >
+                      {product?.image ? (
+                        <img
+                          src={product.image}
+                          alt={product?.name || "Product"}
+                        />
                       ) : (
-                        <span className={styles.unavailable}>Out of stock</span>
+                        <span>🛍️</span>
                       )}
                     </div>
+
+                    {/* INFORMATION */}
+
+                    <div className={styles.productInfo}>
+                      <div className={styles.productTop}>
+                        <h2>{product.name}</h2>
+
+                        {product.category_name && (
+                          <span className={styles.categoryName}>
+                            {product.category_name}
+                          </span>
+                        )}
+                      </div>
+
+                      {product.description && <p>{product.description}</p>}
+
+                      <div className={styles.productBottom}>
+                        <strong>{Number(product.price).toFixed(2)} Birr</strong>
+
+                        {product.is_available ? (
+                          <span className={styles.available}>Available</span>
+                        ) : (
+                          <span className={styles.unavailable}>
+                            Out of stock
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))
+                ))}
+
+                {/* PAGINATION */}
+                {totalPages > 1 && (
+                  <div className={styles.pagination}>
+                    <button
+                      onClick={() => setCurrentPage((page) => page - 1)}
+                      disabled={currentPage === 1}
+                    >
+                      ‹
+                    </button>
+
+                    {Array.from({ length: totalPages }, (_, index) => (
+                      <button
+                        key={index}
+                        className={
+                          currentPage === index + 1 ? styles.activePage : ""
+                        }
+                        onClick={() => setCurrentPage(index + 1)}
+                      >
+                        {index + 1}
+                      </button>
+                    ))}
+
+                    <button
+                      onClick={() => setCurrentPage((page) => page + 1)}
+                      disabled={currentPage === totalPages}
+                    >
+                      ›
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </section>
         )}

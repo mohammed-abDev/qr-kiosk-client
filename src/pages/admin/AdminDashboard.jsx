@@ -33,7 +33,13 @@ function AdminDashboard({ onLogout }) {
   };
 
   const [products, setProducts] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const productsPerPage = 6;
+
   const [categories, setCategories] = useState([]);
+
   const [showBannerManager, setShowBannerManager] = useState(false);
 
   const [loading, setLoading] = useState(true);
@@ -141,6 +147,13 @@ function AdminDashboard({ onLogout }) {
   }, []);
 
   // =========================
+  // SET CURRENT PAGE
+  // =========================
+ useEffect(() => {
+   setCurrentPage(1);
+ }, [selectedCategory, sortOption]);
+
+  // =========================
   // SEARCH + CATEGORY FILTER
   // =========================
 
@@ -195,6 +208,18 @@ function AdminDashboard({ onLogout }) {
 
     return 0;
   });
+
+  // ==============================
+  // PAGINATION
+  // ==============================
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
+
+  const startIndex = (currentPage - 1) * productsPerPage;
+
+  const currentProducts = sortedProducts.slice(
+    startIndex,
+    startIndex + productsPerPage,
+  );
 
   // =========================
   // CLEAR FILTERS
@@ -633,11 +658,12 @@ function AdminDashboard({ onLogout }) {
           </div>
         ) : error ? (
           <div className={`${styles.adminState} ${styles.adminErrorState}`}>
-            <div className={styles.adminStateIcon}>⚠️</div>
+            <div className={styles.adminStateIcon}>📡</div>
 
             <h3>Something went wrong</h3>
 
             <p>{error}</p>
+            <p>Please check your internet connection and try again.</p>
 
             <button
               className={styles.adminRetryButton}
@@ -675,7 +701,7 @@ function AdminDashboard({ onLogout }) {
           </div>
         ) : (
           <div className={styles.adminProducts}>
-            {sortedProducts.map((product) => (
+            {currentProducts.map((product) => (
               <div className={styles.adminProductCard} key={product.id}>
                 {/* IMAGE */}
 
@@ -737,6 +763,39 @@ function AdminDashboard({ onLogout }) {
                 </div>
               </div>
             ))}
+            {totalPages > 1 && (
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => setCurrentPage((page) => page - 1)}
+                  disabled={currentPage === 1}
+                  aria-label="Previous page"
+                >
+                  ‹
+                </button>
+
+                {Array.from({ length: totalPages }, (_, index) => {
+                  const page = index + 1;
+
+                  return (
+                    <button
+                      key={page}
+                      className={currentPage === page ? styles.activePage : ""}
+                      onClick={() => setCurrentPage(page)}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+
+                <button
+                  onClick={() => setCurrentPage((page) => page + 1)}
+                  disabled={currentPage === totalPages}
+                  aria-label="Next page"
+                >
+                  ›
+                </button>
+              </div>
+            )}
           </div>
         )}
       </main>
@@ -806,7 +865,7 @@ function AdminDashboard({ onLogout }) {
           className={styles.bottomNavItem}
           onClick={() => navigate("/admin/shop")}
         >
-          <span className={styles.bottomNavIcon}>⚙️</span>
+          <span className={styles.bottomNavIcon}>⚙ </span>
           <span>Shop Settings</span>
         </button>
 

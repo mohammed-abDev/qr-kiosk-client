@@ -315,7 +315,7 @@
 
   border-radius: 50%;
 
-  font-size: 25px;
+  font-size: 40px;
 }
 
 
@@ -329,7 +329,7 @@
 
 
 .errorState p {
-  margin: 0 0 17px;
+  margin: 0 ;
 
   color: var(--muted-text);
 }
@@ -340,6 +340,8 @@
    ========================================================= */
 
 .retryButton {
+  margin-top: 17px;
+
   border: none;
 
   padding: 11px 22px;
@@ -783,6 +785,107 @@
   transform: scale(0.97);
 }
 
+/*  */
+/* =========================================
+   PRODUCT PAGINATION
+========================================= */
+
+.pagination {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin-top: 10px;
+  padding: 18px 0 8px;
+}
+
+.pagination button {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #f5f7f6;
+  color: #526057;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #eaf0ec;
+  color: #14562e;
+}
+
+.pagination button:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+/* ACTIVE PAGE */
+
+.pagination .activePage {
+  background: #fc6d11;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(252, 109, 17, 0.22);
+}
+
+/* ARROWS */
+
+.pagination button:first-child,
+.pagination button:last-child {
+  background: transparent;
+  color: #14562e;
+  font-size: 20px;
+}
+
+.pagination button:first-child:hover:not(:disabled),
+.pagination button:last-child:hover:not(:disabled) {
+  background: #f1f5f2;
+}
+
+/* DISABLED ARROWS */
+
+.pagination button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .pagination {
+    gap: 5px;
+    margin-top: 6px;
+    padding: 16px 0 6px;
+  }
+
+  .pagination button {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    font-size: 13px;
+  }
+
+  .pagination button:first-child,
+  .pagination button:last-child {
+    font-size: 19px;
+  }
+}
 
 /* =========================================================
    TABLET
