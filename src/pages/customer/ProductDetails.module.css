@@ -496,9 +496,10 @@
    ========================================================= */
 
 .backButtonDetails {
-  width: 100%;
+  /* width: 100%;
 
-  min-height: 52px;
+
+  min-height: 52px; */
 
   margin-top: 25px;
 
@@ -506,14 +507,14 @@
 
   border-radius: 14px;
 
-  background:
+  /* background:
     linear-gradient(
       135deg,
       #14562e,
       #088239
-    );
+    ); */
 
-  color: #ffffff;
+  /* color: #ffffff; */
 
   font-size: 15px;
 
@@ -870,6 +871,208 @@
   .detailsPrice {
     font-size: 26px;
   }
+}
+
+/* =========================================================
+   MY LIST ACTION
+========================================================= */
+
+.myListAction {
+  margin-top: 22px;
+  padding: 16px;
+
+  border: 1px solid #e1e8e3;
+  border-radius: 17px;
+
+  background: #f8faf9;
+}
+
+.myListActionHeader {
+  margin-bottom: 13px;
+}
+
+.myListLabel {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #fc6d11;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+.myListAction h2 {
+  margin: 0;
+
+  color: #14562e;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.myListAction p {
+  margin: 4px 0 0;
+
+  color: #7a857e;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ADD TO MY LIST
+========================================================= */
+
+.addListButton {
+  width: 100%;
+  min-height: 49px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #14562e,
+    #088239
+  );
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 15px rgba(20, 86, 46, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.addListButton:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px rgba(20, 86, 46, 0.22);
+}
+
+.addListButton:active {
+  transform: scale(0.98);
+}
+
+.addIcon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   OUT OF STOCK
+========================================================= */
+
+.disabledListButton {
+  width: 100%;
+  min-height: 49px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #e8ece9;
+
+  color: #8b958f;
+
+  font-size: 13px;
+  font-weight: 750;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+.quantityBox {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  border: 1px solid #dce7df;
+  border-radius: 13px;
+
+  background: #ffffff;
+}
+
+.quantityButton {
+  width: 50px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  background: #f1f6f3;
+
+  color: #14562e;
+
+  font-size: 22px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.quantityButton:hover {
+  background: #e6f0e9;
+  color: #fc6d11;
+}
+
+.quantityCenter {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2px;
+}
+
+.quantityCenter strong {
+  color: #14562e;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.quantityCenter span {
+  color: #8a948e;
+
+  font-size: 9px;
 }
 
 

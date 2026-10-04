@@ -12,6 +12,28 @@ function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // =====================================================
+  // MY LIST
+  // =====================================================
+
+  const [myList, setMyList] = useState(() => {
+    try {
+      const savedList = localStorage.getItem("abduMartCart");
+
+      return savedList ? JSON.parse(savedList) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // =====================================================
+  // SAVE MY LIST
+  // =====================================================
+
+  useEffect(() => {
+    localStorage.setItem("abduMartCart", JSON.stringify(myList));
+  }, [myList]);
+
   // ==============================
   // GET PRODUCT
   // ==============================
@@ -61,6 +83,98 @@ function ProductDetails() {
         console.error("Shop error:", error);
       });
   }, []);
+
+  // =====================================================
+  // MY LIST HELPERS
+  // =====================================================
+
+  const existingItem = product
+    ? myList.find((item) => item.id === product.id)
+    : null;
+
+  const isInMyList = Boolean(existingItem);
+
+  // =====================================================
+  // ADD TO MY LIST
+  // =====================================================
+
+  const addToMyList = () => {
+    if (!product || !product.is_available) {
+      return;
+    }
+
+    setMyList((currentList) => {
+      const existing = currentList.find((item) => item.id === product.id);
+
+      if (existing) {
+        return currentList.map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item,
+        );
+      }
+
+      return [
+        ...currentList,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ];
+    });
+  };
+
+  // =====================================================
+  // INCREASE QUANTITY
+  // =====================================================
+
+  const increaseQuantity = () => {
+    if (!product) return;
+
+    setMyList((currentList) =>
+      currentList.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item,
+      ),
+    );
+  };
+
+  // =====================================================
+  // DECREASE QUANTITY
+  // =====================================================
+
+  const decreaseQuantity = () => {
+    if (!product) return;
+
+    setMyList((currentList) =>
+      currentList
+        .map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
+  };
+
+  // =====================================================
+  // MY LIST COUNT
+  // =====================================================
+
+  const myListCount = myList.reduce(
+    (total, item) => total + Number(item.quantity || 0),
+    0,
+  );
 
   // ==============================
   // LOADING
@@ -134,7 +248,7 @@ function ProductDetails() {
 
         <div className={styles.detailsImage}>
           {productImageUrl ? (
-            <img src={productImageUrl} alt={product?.name || "Product"} />
+            <img src={productImageUrl} alt={product?.name} />
           ) : (
             <span>🛍️</span>
           )}
@@ -205,16 +319,78 @@ function ProductDetails() {
             <strong>{shop?.name || "Shop"}</strong>
           </div>
         </div>
+        {/* =================================================
+    MY LIST ACTION
+================================================= */}
+
+        <section className={styles.myListAction}>
+          <div className={styles.myListActionHeader}>
+            <span className={styles.myListLabel}>MY LIST</span>
+
+            <h2>Remember this product</h2>
+
+            <p>Keep it on your list while you continue shopping.</p>
+          </div>
+
+          {!product.is_available ? (
+            <button
+              type="button"
+              className={styles.disabledListButton}
+              disabled
+            >
+              Out of Stock
+            </button>
+          ) : !isInMyList ? (
+            <button
+              type="button"
+              className={styles.addListButton}
+              onClick={addToMyList}
+            >
+              <span className={styles.addIcon}>🛒</span>
+
+              <span>Add to My List</span>
+            </button>
+          ) : (
+            <div className={styles.quantityBox}>
+              <button
+                type="button"
+                className={styles.quantityButton}
+                onClick={decreaseQuantity}
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+
+              <div className={styles.quantityCenter}>
+                <strong>✓ In My List</strong>
+
+                <span>
+                  {existingItem.quantity}{" "}
+                  {existingItem.quantity === 1 ? "item" : "items"}
+                </span>
+              </div>
+
+              <button
+                type="button"
+                className={styles.quantityButton}
+                onClick={increaseQuantity}
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+          )}
+        </section>
 
         {/* ==============================
-                    BACK TO MENU
-                ============================== */}
+            BACK TO MENU
+          ============================== */}
 
         <button
           className={styles.backButtonDetails}
           onClick={() => navigate("/")}
         >
-          Back to Menu
+          Back to Home
         </button>
       </main>
     </div>
