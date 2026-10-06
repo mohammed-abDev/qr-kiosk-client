@@ -610,7 +610,11 @@
 .categoryButton:hover {
   border-color: #b9cdbf;
 
-  color: #14562e;
+  border-color: #14562e;
+
+  background: #14562e;
+
+  color: #ffffff;
 }
 
 .categoryActive {
@@ -928,9 +932,14 @@
 }
 
 .pagination button:hover:not(:disabled) {
+
+  border-color: #b9cdbf;
+
   border-color: #14562e;
 
-  color: #14562e;
+  background: #14562e;
+
+  color: #ffffff;
 }
 
 .pagination .activePage {

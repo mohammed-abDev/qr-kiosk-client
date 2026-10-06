@@ -1226,6 +1226,13 @@ background: var(--card-bg);
   cursor: pointer;
 }
 
+.categoryChip:hover{
+  border-color: var(--green);
+
+  background: var(--green);
+
+  color: #ffffff;
+}
 
 .categoryChipActive {
   border-color: var(--green);
