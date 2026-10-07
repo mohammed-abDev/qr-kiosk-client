@@ -372,18 +372,18 @@ function Home() {
   // CATEGORY ICON
   // =========================================
 
-  const getCategoryIcon = (name) => {
-    const category = name?.toLowerCase().trim();
+  // const getCategoryIcon = (name) => {
+  //   const category = name?.toLowerCase().trim();
 
-    if (category === "snacks") return "▣";
-    if (category === "drinks") return "◉";
-    if (category === "food") return "♨";
-    if (category === "dairy") return "▥";
-    if (category === "bakery") return "◒";
-    if (category === "household") return "⌂";
+  //   if (category === "snacks") return "▣";
+  //   if (category === "drinks") return "◉";
+  //   if (category === "food") return "♨";
+  //   if (category === "dairy") return "▥";
+  //   if (category === "bakery") return "◒";
+  //   if (category === "household") return "⌂";
 
-    return "□";
-  };
+  //   return "□";
+  // };
 
   // =========================================
   // COPY ACCOUNT
@@ -561,7 +561,7 @@ function Home() {
                 aria-label="Bank information"
               >
                 🏦
-                <span>Bank</span>
+                <span>Bank </span>
               </button>
 
               {/* MY LIST */}
@@ -1003,7 +1003,7 @@ function Home() {
               disabled={cartItems.length === 0}
             >
               View your List
-            </button>
+            </button> 
           </div>
         </aside>
 

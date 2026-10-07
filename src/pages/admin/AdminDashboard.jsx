@@ -724,8 +724,95 @@ function AdminDashboard({ onLogout }) {
           <strong>Abdu Mart</strong>
         </button>
 
-        <div className={styles.mobileProfile}>
+        <div className={styles.mobileProfile} ref={profileMenuRef}>
           <span>AM</span>
+         
+            {/* PROFILE BUTTON */}
+            <button
+              type="button"
+              className={styles.profileTrigger}
+              onClick={() => setShowProfileMenu((prev) => !prev)}
+            >
+            </button>
+
+            {/* PROFILE DROPDOWN */}
+            {showProfileMenu && (
+              <div className={styles.profileDropdown}>
+                {/* PROFILE HEADER */}
+                  {/* <button>x</button> */}
+                  <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <Icon name="close" size={22} />
+              </button>
+                <div className={styles.profileDropdownHeader}>
+                  <div className={styles.profileDropdownAvatar}>AM</div>
+                  <div>
+                    <strong>Abdu Mart</strong>
+                    <span>Administrator</span>
+                  </div>
+                </div>
+
+                <div className={styles.profileDropdownDivider} />
+
+                {/* VIEW STORE */}
+                <button
+                  type="button"
+                  className={styles.profileDropdownItem}
+                  onClick={() => {
+                    setShowProfileMenu(false);
+                    navigate("/");
+                  }}
+                >
+                  <span>⌂</span>
+
+                  <div>
+                    <strong>View Store</strong>
+                    <small>Open customer store</small>
+                  </div>
+                </button>
+
+                {/* SHOP SETTINGS */}
+                <button
+                  type="button"
+                  className={styles.profileDropdownItem}
+                  onClick={() => {
+                    setShowProfileMenu(false);
+                    navigate("/admin/shop");
+                  }}
+                >
+                  <span>⚙</span>
+
+                  <div>
+                    <strong>Shop Settings</strong>
+                    <small>Manage your shop</small>
+                  </div>
+                </button>
+
+                <div className={styles.profileDropdownDivider} />
+
+                {/* LOGOUT */}
+                <button
+                  type="button"
+                  className={`${styles.profileDropdownItem} ${styles.logoutItem}`}
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    setShowProfileMenu(false);
+                    navigate("/admin");
+                  }}
+                >
+                  <span>↪</span>
+
+                  <div>
+                    <strong>Logout</strong>
+                    <small>Sign out of admin</small>
+                  </div>
+                </button>
+              </div>
+            )}
+          
         </div>
       </header>
 
@@ -820,21 +907,7 @@ function AdminDashboard({ onLogout }) {
                 value={productSearch}
                 onChange={(event) => setProductSearch(event.target.value)}
               />
-
-              {/* <span className={styles.searchShortcut}>Ctrl + K</span> */}
             </div>
-
-            {/* <button
-              type="button"
-              className={styles.notificationButton}
-              aria-label="Notifications"
-            >
-              <span className={styles.notificationBell}>◇</span>
-
-              {notification.message && (
-                <span className={styles.notificationDot}>1</span>
-              )}
-            </button> */}
 
             <div className={styles.profileMenu} ref={profileMenuRef}>
               {/* PROFILE BUTTON */}
@@ -865,7 +938,6 @@ function AdminDashboard({ onLogout }) {
                       strokeLinejoin="round"
                     />
                   </svg>
-                    
                 </span>
               </button>
 

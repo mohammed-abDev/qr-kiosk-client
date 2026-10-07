@@ -672,6 +672,7 @@ background: var(--card-bg);
 }
 
 
+
 /* Divider */
 
 .profileDropdownDivider {
@@ -2343,6 +2344,24 @@ background: var(--card-bg);
     font-weight: 800;
   }
 
+ .profileDropdown > button:first-child{
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #eaf7ef;
+    color: #14562e;
+    border:none;
+    font-size: 13px;
+    font-weight: 800;
+    justify-self: flex-end;
+    cursor: pointer;
+    
+}
+
 
   .dashboardContent {
     padding: 15px 13px 25px;
@@ -3023,7 +3042,7 @@ background: var(--card-bg);
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
+    /* animation-duration: 0.01s !important; */
     transition-duration: 0.01ms !important;
   }
 
