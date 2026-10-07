@@ -238,7 +238,7 @@ function ProductDetails() {
 
         <button
           className={styles.backButton}
-          onClick={() => navigate("/")}
+          onClick={() => navigate(-1)}
           aria-label="Back to menu"
         >
           ←

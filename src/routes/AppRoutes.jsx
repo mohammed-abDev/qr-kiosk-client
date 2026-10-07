@@ -5,6 +5,7 @@ import ProductDetails from "../pages/customer/ProductDetails";
 import AdminRoutes from "./AdminRoutes";
 import PageNotFound from "../components/common/PageNotFound"
 import Categories from "../pages/Categories/Categories";
+import CategoryProducts from "../pages/Categories/CategoriesProduct";
 import More from "../pages/More/More";
 import BannerManager from "../components/BannerManager/BannerManager";
 
@@ -22,8 +23,10 @@ function AppRoutes() {
       {/* Not Found */}
       <Route path="*" element={<PageNotFound />} />
 
-      {/* categoris */}
+      {/* categoris Products */}
       <Route path="/categories" element={<Categories />} />
+
+      <Route path="/categories/:id" element={<CategoryProducts />} />
 
       {/* More */}
       <Route path="/more" element={<More />} />
