@@ -221,6 +221,42 @@
     0 0 0 3px rgba(8, 130, 57, 0.1);
 }
 
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 48px;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+  color: #14562e;
+
+  padding: 4px;
+  cursor: pointer;
+}
+
+.passwordToggle:hover {
+  color: #088239;
+}
+
+.passwordToggle svg {
+  display: block;
+}
+
 
 
 

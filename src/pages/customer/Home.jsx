@@ -479,15 +479,15 @@ function Home() {
           </button>
         </nav>
 
-        {/* DELIVERY CARD */}
+        {/* version CARD */}
 
         <div className={styles.deliveryCard}>
-          <div className={styles.deliveryIcon}>♟</div>
+          <div className={styles.deliveryIcon}>🏪</div>
 
           <div>
             <strong>Abdu-Mart</strong>
             <span>Version 1.0.0</span>
-            <b>@ 2026 G.c</b>
+            <b>@ 2026 G.c </b>
           </div>
         </div>
       </aside>
@@ -1003,7 +1003,7 @@ function Home() {
               disabled={cartItems.length === 0}
             >
               View your List
-            </button> 
+            </button>
           </div>
         </aside>
 
@@ -1090,7 +1090,6 @@ function Home() {
                   <span>Subtotal</span>
                   <strong>{cartTotal.toFixed(2)} Birr</strong>
                 </div>
-
               </div>
             </div>
           </div>
