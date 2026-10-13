@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router";
 import styles from "./AdminDashboard.module.css";
 import image from "../../assets/shoping-logo.png";
+import CustomerCredit from "./CustomerCredit";
 import API_URL from "../../config/api";
 
 /* =========================================================
@@ -640,6 +641,18 @@ function AdminDashboard({ onLogout }) {
         navigate("/admin/shop");
       },
     },
+
+    {
+      label: "Customer Credit",
+      icon: "payment",
+      action: () => {
+        setMobileMenuOpen(false);
+        document.getElementById("customer-credit-section")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      },
+    },
   ];
 
   /* =======================================================
@@ -726,93 +739,90 @@ function AdminDashboard({ onLogout }) {
 
         <div className={styles.mobileProfile} ref={profileMenuRef}>
           <span>AM</span>
-         
-            {/* PROFILE BUTTON */}
-            <button
-              type="button"
-              className={styles.profileTrigger}
-              onClick={() => setShowProfileMenu((prev) => !prev)}
-            >
-            </button>
 
-            {/* PROFILE DROPDOWN */}
-            {showProfileMenu && (
-              <div className={styles.profileDropdown}>
-                {/* PROFILE HEADER */}
-                  {/* <button>x</button> */}
-                  <button
+          {/* PROFILE BUTTON */}
+          <button
+            type="button"
+            className={styles.profileTrigger}
+            onClick={() => setShowProfileMenu((prev) => !prev)}
+          ></button>
+
+          {/* PROFILE DROPDOWN */}
+          {showProfileMenu && (
+            <div className={styles.profileDropdown}>
+              {/* PROFILE HEADER */}
+              <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Close menu"
               >
                 <Icon name="close" size={22} />
               </button>
-                <div className={styles.profileDropdownHeader}>
-                  <div className={styles.profileDropdownAvatar}>AM</div>
-                  <div>
-                    <strong>Abdu Mart</strong>
-                    <span>Administrator</span>
-                  </div>
+              <div className={styles.profileDropdownHeader}>
+                <div className={styles.profileDropdownAvatar}>AM</div>
+                <div>
+                  <strong>Abdu Mart</strong>
+                  <span>Administrator</span>
                 </div>
-
-                <div className={styles.profileDropdownDivider} />
-
-                {/* VIEW STORE */}
-                <button
-                  type="button"
-                  className={styles.profileDropdownItem}
-                  onClick={() => {
-                    setShowProfileMenu(false);
-                    navigate("/");
-                  }}
-                >
-                  <span>⌂</span>
-
-                  <div>
-                    <strong>View Store</strong>
-                    <small>Open customer store</small>
-                  </div>
-                </button>
-
-                {/* SHOP SETTINGS */}
-                <button
-                  type="button"
-                  className={styles.profileDropdownItem}
-                  onClick={() => {
-                    setShowProfileMenu(false);
-                    navigate("/admin/shop");
-                  }}
-                >
-                  <span>⚙</span>
-
-                  <div>
-                    <strong>Shop Settings</strong>
-                    <small>Manage your shop</small>
-                  </div>
-                </button>
-
-                <div className={styles.profileDropdownDivider} />
-
-                {/* LOGOUT */}
-                <button
-                  type="button"
-                  className={`${styles.profileDropdownItem} ${styles.logoutItem}`}
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    setShowProfileMenu(false);
-                    navigate("/admin");
-                  }}
-                >
-                  <span>↪</span>
-
-                  <div>
-                    <strong>Logout</strong>
-                    <small>Sign out of admin</small>
-                  </div>
-                </button>
               </div>
-            )}
-          
+
+              <div className={styles.profileDropdownDivider} />
+
+              {/* VIEW STORE */}
+              <button
+                type="button"
+                className={styles.profileDropdownItem}
+                onClick={() => {
+                  setShowProfileMenu(false);
+                  navigate("/");
+                }}
+              >
+                <span>⌂</span>
+
+                <div>
+                  <strong>View Store</strong>
+                  <small>Open customer store</small>
+                </div>
+              </button>
+
+              {/* SHOP SETTINGS */}
+              <button
+                type="button"
+                className={styles.profileDropdownItem}
+                onClick={() => {
+                  setShowProfileMenu(false);
+                  navigate("/shop");
+                }}
+              >
+                <span>⚙</span>
+
+                <div>
+                  <strong>Shop Settings</strong>
+                  <small>Manage your shop</small>
+                </div>
+              </button>
+
+              <div className={styles.profileDropdownDivider} />
+
+              {/* LOGOUT */}
+              <button
+                type="button"
+                className={`${styles.profileDropdownItem} ${styles.logoutItem}`}
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setShowProfileMenu(false);
+                  navigate("/admin");
+                }}
+              >
+                <span>↪</span>
+
+                <div>
+                  <strong>Logout</strong>
+                  <small>Sign out of admin</small>
+                </div>
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
@@ -978,7 +988,7 @@ function AdminDashboard({ onLogout }) {
                     type="button"
                     className={styles.profileDropdownItem}
                     onClick={() => {
-                      setShowProfileMenu(false);
+                      setShowProfileMenu(true);
                       navigate("/admin/shop");
                     }}
                   >
@@ -1618,6 +1628,12 @@ function AdminDashboard({ onLogout }) {
             </aside>
           </div>
         </main>
+        <section
+          id="customer-credit-section"
+          className={styles.customerCreditSection}
+        >
+          <CustomerCredit />
+        </section>
       </div>
 
       {/* ===================================================

@@ -2174,6 +2174,104 @@ background: var(--card-bg);
   display: none;
 }
 
+/* =========================================
+   CUSTOMER CREDIT SECTION
+========================================= */
+
+.customerCreditSection {
+  width: 100%;
+  padding: 28px;
+  margin-top: 24px;
+  scroll-margin-top: 24px;
+  background: #ffffff;
+  border: 1px solid #e8ece9;
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+.customerCreditHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.customerCreditHeader h2 {
+  margin: 0;
+  color: #14562e;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.customerCreditHeader p {
+  margin: 8px 0 0;
+  color: #6b756e;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.customerCreditPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 28px;
+  text-align: center;
+  background: #f8faf8;
+  border: 1px dashed #d6e3d9;
+  border-radius: 14px;
+}
+
+.customerCreditIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+  color: #088239;
+  background: #e8f5ec;
+  border-radius: 16px;
+}
+
+.customerCreditPlaceholder h3 {
+  margin: 0 0 10px;
+  color: #14562e;
+  font-size: 19px;
+}
+
+.customerCreditPlaceholder p {
+  max-width: 480px;
+  margin: 0 0 14px;
+  color: #69746c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.customerCreditPlaceholder span {
+  color: #088239;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .customerCreditSection {
+    padding: 18px;
+    margin-top: 18px;
+    border-radius: 14px;
+  }
+
+  .customerCreditHeader h2 {
+    font-size: 21px;
+  }
+
+  .customerCreditPlaceholder {
+    min-height: 240px;
+    padding: 20px 14px;
+  }
+}
 
 /* =========================================================
    TABLET

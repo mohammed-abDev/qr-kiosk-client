@@ -1,0 +1,301 @@
+
+.container {
+  width: 100%;
+  color: #183b27;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.heading h2 {
+  margin: 0;
+  color: #14562e;
+  font-size: 24px;
+}
+
+.heading p,
+.formDescription,
+.listHeading p {
+  margin: 7px 0 0;
+  color: #748078;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.refreshButton {
+  padding: 10px 16px;
+  border: 1px solid #dce7df;
+  border-radius: 9px;
+  background: #fff;
+  color: #14562e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #f5faf6;
+  border: 1px solid #e1ece4;
+  border-radius: 14px;
+}
+
+.summaryCard span {
+  color: #65736a;
+  font-size: 13px;
+}
+
+.summaryCard strong {
+  color: #14562e;
+  font-size: 23px;
+  overflow-wrap: anywhere;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.4fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.formCard,
+.listCard {
+  min-width: 0;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e7ece8;
+  border-radius: 14px;
+}
+
+.formCard h3,
+.listHeading h3 {
+  margin: 0;
+  color: #14562e;
+  font-size: 18px;
+}
+
+.formCard label {
+  display: block;
+  margin: 17px 0 7px;
+  color: #35483b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.formCard input,
+.formCard textarea,
+.searchInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  color: #23392b;
+  background: #fff;
+  border: 1px solid #dce5de;
+  border-radius: 9px;
+  outline: none;
+  font: inherit;
+  font-size: 14px;
+}
+
+.formCard input:focus,
+.formCard textarea:focus,
+.searchInput:focus {
+  border-color: #088239;
+  box-shadow: 0 0 0 3px rgba(8, 130, 57, 0.1);
+}
+
+.formCard textarea {
+  resize: vertical;
+}
+
+.submitButton {
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px 16px;
+  color: #fff;
+  background: #088239;
+  border: none;
+  border-radius: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background: #14562e;
+}
+
+.submitButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.listHeading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.searchInput {
+  margin-bottom: 16px;
+}
+
+.customerList {
+  display: flex;
+  flex-direction: column;
+}
+
+.customerRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf0ed;
+}
+
+.customerRow:last-child {
+  border-bottom: none;
+}
+
+.customerAvatar {
+  display: flex;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #14562e;
+  background: #e9f5ec;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.customerDetails {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.customerDetails strong {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.customerDetails span,
+.customerDetails small {
+  color: #748078;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.customerBalance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  text-align: right;
+}
+
+.customerBalance span {
+  color: #748078;
+  font-size: 11px;
+}
+
+.customerBalance strong {
+  color: #14562e;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.emptyState {
+  padding: 35px 12px;
+  color: #748078;
+  text-align: center;
+  font-size: 14px;
+}
+
+.errorMessage,
+.successMessage {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.errorMessage {
+  color: #a52323;
+  background: #fff0f0;
+  border: 1px solid #f3d0d0;
+}
+
+.successMessage {
+  color: #14562e;
+  background: #edf8f0;
+  border: 1px solid #d2ead9;
+}
+
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .heading {
+    align-items: flex-start;
+  }
+
+  .heading h2 {
+    font-size: 21px;
+  }
+
+  .summaryGrid {
+    gap: 10px;
+  }
+
+  .summaryCard {
+    padding: 14px;
+  }
+
+  .summaryCard strong {
+    font-size: 18px;
+  }
+
+  .formCard,
+  .listCard {
+    padding: 16px;
+  }
+
+  .customerRow {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .customerBalance {
+    margin-left: 54px;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
