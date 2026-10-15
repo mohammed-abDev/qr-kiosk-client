@@ -8,6 +8,7 @@ import ShopSettings from "../pages/admin/ShopSetting";
 import ProtectedRoute from "./ProtectedRoute";
 import PageNotFound from "../components/common/PageNotFound";
 import PaymentMethods from "../pages/admin/PaymentMethods";
+import CustomerCredit from "../pages/admin/CustomerCredit";
 
 function AdminRoutes() {
   return (
@@ -49,6 +50,15 @@ function AdminRoutes() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="customer-credit"
+        element={
+          <ProtectedRoute>
+            <CustomerCredit />
+          </ProtectedRoute>
+        }
+      />
+
       <Route path="*" element={<PageNotFound />} />
       <Route path="payment-methods" element={<PaymentMethods />} />
     </Routes>

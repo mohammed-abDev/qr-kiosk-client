@@ -645,12 +645,16 @@ function AdminDashboard({ onLogout }) {
     {
       label: "Customer Credit",
       icon: "payment",
+      // action: () => {
+      //   setMobileMenuOpen(false);
+      //   document.getElementById("customer-credit-section")?.scrollIntoView({
+      //     behavior: "smooth",
+      //     block: "start",
+      //   });
+      // },
       action: () => {
         setMobileMenuOpen(false);
-        document.getElementById("customer-credit-section")?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        navigate("/admin/customer-credit");
       },
     },
   ];
@@ -1628,12 +1632,12 @@ function AdminDashboard({ onLogout }) {
             </aside>
           </div>
         </main>
-        <section
+        {/* <section
           id="customer-credit-section"
           className={styles.customerCreditSection}
         >
           <CustomerCredit />
-        </section>
+        </section> */}
       </div>
 
       {/* ===================================================
