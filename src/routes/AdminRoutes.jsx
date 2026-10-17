@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import PageNotFound from "../components/common/PageNotFound";
 import PaymentMethods from "../pages/admin/PaymentMethods";
 import CustomerCredit from "../pages/admin/CustomerCredit";
+import CreditNotifications from "../pages/admin/CreditNotifications";
 
 function AdminRoutes() {
   return (
@@ -55,6 +56,15 @@ function AdminRoutes() {
         element={
           <ProtectedRoute>
             <CustomerCredit />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="credit-notifications"
+        element={
+          <ProtectedRoute>
+            <CreditNotifications />
           </ProtectedRoute>
         }
       />
