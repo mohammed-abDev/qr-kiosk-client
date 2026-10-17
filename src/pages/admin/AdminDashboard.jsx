@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import styles from "./AdminDashboard.module.css";
 import image from "../../assets/shoping-logo.png";
 import CustomerCredit from "./CustomerCredit";
+import PushNotificationSetup from "../../components/common/PushNotificationSetup";
 import API_URL from "../../config/api";
 
 /* =========================================================
@@ -257,6 +258,12 @@ function AdminDashboard({ onLogout }) {
     type: "",
   });
 
+  const [notificationCount, setNotificationCount] = useState(0);
+
+  //notification bell dropdown state
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [recentNotifications, setRecentNotifications] = useState([]);
+
   const [error, setError] = useState("");
 
   const [deleteProductId, setDeleteProductId] = useState(null);
@@ -287,6 +294,48 @@ function AdminDashboard({ onLogout }) {
       });
     }, 3000);
   };
+
+  useEffect(() => {
+    let active = true;
+
+    const loadNotificationCount = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        if (!token) return;
+
+        const response = await fetch(`${API_URL}/api/credit/notifications`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) return;
+
+        const data = await response.json();
+
+      if (active) {
+        const items = Array.isArray(data.notifications)
+          ? data.notifications
+          : [];
+
+        setRecentNotifications(items);
+        setNotificationCount(items.length);
+      }
+      } catch (error) {
+        console.error("Could not load notification count:", error);
+      }
+    };
+
+    loadNotificationCount();
+
+    const intervalId = setInterval(loadNotificationCount, 15000);
+
+    return () => {
+      active = false;
+      clearInterval(intervalId);
+    };
+  }, []);
 
   /* =======================================================
     setShowProfileMenu
@@ -923,6 +972,104 @@ function AdminDashboard({ onLogout }) {
               />
             </div>
 
+            {/* dropdown notifications */}
+            <div className={styles.notificationWrapper}>
+              <button
+                type="button"
+                className={styles.notificationBell}
+                onClick={() => setShowNotifications((previous) => !previous)}
+                aria-label="Toggle credit notifications"
+                aria-expanded={showNotifications}
+              >
+                <span aria-hidden="true">🔔</span>
+
+                {notificationCount > 0 && (
+                  <span className={styles.notificationBadge}>
+                    {notificationCount > 99 ? "99+" : notificationCount}
+                  </span>
+                )}
+              </button>
+
+              {showNotifications && (
+                <div className={styles.notificationDropdown}>
+                  <div className={styles.notificationDropdownHeader}>
+                    <div>
+                      <h3>Notifications</h3>
+                      <p>Recent credit activity</p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => navigate("/admin/credit-notifications")}
+                    >
+                      View all
+                    </button>
+                  </div>
+
+                  {recentNotifications.length === 0 ? (
+                    <div className={styles.notificationEmpty}>
+                      No credit notifications yet.
+                    </div>
+                  ) : (
+                    <div className={styles.notificationDropdownList}>
+                      {recentNotifications.slice(0, 5).map((item) => {
+                        const isPayment = Boolean(item.payment_id);
+
+                        return (
+                          <button
+                            type="button"
+                            key={item.id}
+                            className={styles.notificationDropdownItem}
+                            onClick={() =>
+                              navigate("/admin/credit-notifications")
+                            }
+                          >
+                            <span
+                              className={`${styles.notificationEventIcon} ${
+                                isPayment
+                                  ? styles.notificationPayment
+                                  : styles.notificationSale
+                              }`}
+                            >
+                              {isPayment ? "✓" : "↗"}
+                            </span>
+
+                            <span className={styles.notificationItemText}>
+                              <strong>
+                                {isPayment
+                                  ? "Customer repayment"
+                                  : "Credit sale"}
+                              </strong>
+                              <span>{item.message}</span>
+                              <small>
+                                {item.created_at
+                                  ? new Date(item.created_at).toLocaleString(
+                                      "en-ET",
+                                      {
+                                        dateStyle: "medium",
+                                        timeStyle: "short",
+                                      },
+                                    )
+                                  : "Date unavailable"}
+                              </small>
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  <button
+                    type="button"
+                    className={styles.notificationFooter}
+                    onClick={() => navigate("/admin/credit-notifications")}
+                  >
+                    Open notification history →
+                  </button>
+                </div>
+              )}
+            </div>
+
             <div className={styles.profileMenu} ref={profileMenuRef}>
               {/* PROFILE BUTTON */}
               <button
@@ -1028,6 +1175,8 @@ function AdminDashboard({ onLogout }) {
             </div>
           </div>
         </header>
+
+        <PushNotificationSetup />
 
         {/* =================================================
             CONTENT

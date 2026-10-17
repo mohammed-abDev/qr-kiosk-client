@@ -42,8 +42,16 @@ const CreditNotifications = () => {
   }, []);
 
   useEffect(() => {
+  fetchNotifications();
+
+  const intervalId = setInterval(() => {
     fetchNotifications();
-  }, [fetchNotifications]);
+  }, 25000);
+
+  return () => {
+    clearInterval(intervalId);
+  };
+}, [fetchNotifications]);
 
   const filteredNotifications = notifications.filter((item) => {
     if (filter === "sales") return Boolean(item.transaction_id);
