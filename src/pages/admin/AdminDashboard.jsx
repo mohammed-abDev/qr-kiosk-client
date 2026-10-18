@@ -972,6 +972,9 @@ function AdminDashboard({ onLogout }) {
               />
             </div>
 
+            {/* push notification */}
+            <PushNotificationSetup />
+
             {/* dropdown notifications */}
             <div className={styles.notificationWrapper}>
               <button
@@ -1175,8 +1178,6 @@ function AdminDashboard({ onLogout }) {
             </div>
           </div>
         </header>
-
-        <PushNotificationSetup />
 
         {/* =================================================
             CONTENT
