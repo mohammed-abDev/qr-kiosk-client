@@ -5,6 +5,10 @@ import image from "../../assets/shoping-logo.png";
 import CustomerCredit from "./CustomerCredit";
 import PushNotificationSetup from "../../components/common/PushNotificationSetup";
 import API_URL from "../../config/api";
+import socket from "../../config/socket";
+console.log("ADMIN DASHBOARD FILE LOADED");
+console.log("ADMIN SOCKET CONNECTED:", socket.id);
+
 
 /* =========================================================
    PRODUCT IMAGE
@@ -238,6 +242,7 @@ function Icon({ name, size = 20 }) {
 
 function AdminDashboard({ onLogout }) {
   const navigate = useNavigate();
+  const knownNotificationIds = useRef(null);
 
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const profileMenuRef = useRef(null);
@@ -264,6 +269,8 @@ function AdminDashboard({ onLogout }) {
   const [showNotifications, setShowNotifications] = useState(false);
   const [recentNotifications, setRecentNotifications] = useState([]);
 
+  const [previousNotificationIds, setPreviousNotificationIds] = useState(null);
+
   const [error, setError] = useState("");
 
   const [deleteProductId, setDeleteProductId] = useState(null);
@@ -276,6 +283,62 @@ function AdminDashboard({ onLogout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const token = localStorage.getItem("token");
+
+  const audioUnlocked = useRef(false);
+
+  const unlockNotificationSound = async () => {
+    try {
+      const audio = new Audio("/send-notification.wav");
+      audio.volume = 0;
+
+      await audio.play();
+      audio.pause();
+      audio.currentTime = 0;
+
+      audioUnlocked.current = true;
+      console.log("Notification sound unlocked");
+    } catch (error) {
+      console.error("Could not unlock notification sound:", error);
+    }
+  };
+
+  useEffect(() => {
+    const handleCreditNotification = (notification) => {
+      console.log("Real-time credit notification received:", notification);
+
+      // Display the alert in the dashboard
+      showNotification(
+        notification.message ||
+          "A new credit transaction or repayment was recorded.",
+        "success",
+      );
+
+      // Play the notification sound
+      const audio = new Audio("/send-notification.wav");
+
+      audio.play().catch((error) => {
+        console.log("Notification sound could not play:", error);
+      });
+
+      // Refresh the notification list and count
+      setRecentNotifications((previous) => [
+        notification,
+        ...previous.filter(
+          (item) => String(item.id) !== String(notification.id),
+        ),
+      ]);
+
+      setNotificationCount((previous) => previous + 1);
+    };
+
+    socket.connect();
+    socket.on("credit:notification", handleCreditNotification);
+
+    return () => {
+      socket.off("credit:notification", handleCreditNotification);
+      socket.disconnect();
+    };
+  }, []);
 
   /* =======================================================
      NOTIFICATION
@@ -292,50 +355,141 @@ function AdminDashboard({ onLogout }) {
         message: "",
         type: "",
       });
-    }, 3000);
+    }, 30000);
   };
 
-  useEffect(() => {
-    let active = true;
+  // useEffect(() => {
+  //   let active = true;
 
-    const loadNotificationCount = async () => {
-      try {
-        const token = localStorage.getItem("token");
+  //   const loadNotificationCount = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token");
 
-        if (!token) return;
+  //       if (!token) return;
 
-        const response = await fetch(`${API_URL}/api/credit/notifications`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  //       const response = await fetch(`${API_URL}/api/credit/notifications`, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (!response.ok) return;
+  //       if (!response.ok) return;
 
-        const data = await response.json();
+  //       const data = await response.json();
 
-      if (active) {
-        const items = Array.isArray(data.notifications)
-          ? data.notifications
-          : [];
+  //       if (active) {
+  //         const items = Array.isArray(data.notifications)
+  //           ? data.notifications
+  //           : [];
 
-        setRecentNotifications(items);
-        setNotificationCount(items.length);
+  //         const currentIds = new Set(items.map((item) => String(item.id)));
+
+  //         // Don't play a sound for notifications already present
+  //         // when the dashboard first loads.
+  //         if (knownNotificationIds.current !== null) {
+  //           const hasNewNotification = items.some(
+  //             (item) => !knownNotificationIds.current.has(String(item.id)),
+  //           );
+
+  //           if (hasNewNotification) {
+  //             const audio = new Audio("/send-notification.wav");
+
+  //             audio.play().catch((error) => {
+  //               console.log("Notification sound could not play:", error);
+  //             });
+  //           }
+  //         }
+
+  //         knownNotificationIds.current = currentIds;
+
+  //         setRecentNotifications(items);
+  //         setNotificationCount(items.length);
+  //       }
+  //     } catch (error) {
+  //       console.error("Could not load notification count:", error);
+  //     }
+  //   };
+
+  //   loadNotificationCount();
+
+  //   const intervalId = setInterval(loadNotificationCount, 15000);
+
+  //   return () => {
+  //     active = false;
+  //     clearInterval(intervalId);
+  //   };
+  // }, []);
+
+  
+useEffect(() => {
+  let active = true;
+
+  const loadNotificationCount = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      const response = await fetch(`${API_URL}/api/credit/notifications`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) return;
+
+      const data = await response.json();
+
+      if (!active) return;
+
+      const items = Array.isArray(data.notifications) ? data.notifications : [];
+
+      const currentIds = new Set(items.map((item) => String(item.id)));
+
+      // First request initializes the list without an alert.
+      if (knownNotificationIds.current === null) {
+        knownNotificationIds.current = currentIds;
+      } else {
+        const newItems = items.filter(
+          (item) => !knownNotificationIds.current.has(String(item.id)),
+        );
+
+        if (newItems.length > 0) {
+          const latest = newItems[0];
+
+          // Display an in-app message.
+          showNotification(
+            latest.message ||
+              "A new credit transaction or repayment was recorded.",
+            "success",
+          );
+
+          // Try to play the notification sound.
+          const audio = new Audio("/send-notification.wav");
+
+          audio.play().catch((error) => {
+            console.error("Notification sound failed:", error);
+          });
+        }
+
+        knownNotificationIds.current = currentIds;
       }
-      } catch (error) {
-        console.error("Could not load notification count:", error);
-      }
-    };
 
-    loadNotificationCount();
+      setRecentNotifications(items);
+      setNotificationCount(items.length);
+    } catch (error) {
+      console.error("Could not load credit notifications:", error);
+    }
+  };
 
-    const intervalId = setInterval(loadNotificationCount, 15000);
+  loadNotificationCount();
 
-    return () => {
-      active = false;
-      clearInterval(intervalId);
-    };
-  }, []);
+  const intervalId = setInterval(loadNotificationCount, 15000);
+
+  return () => {
+    active = false;
+    clearInterval(intervalId);
+  };
+}, []);
 
   /* =======================================================
     setShowProfileMenu
@@ -974,13 +1128,34 @@ function AdminDashboard({ onLogout }) {
 
             {/* push notification */}
             <PushNotificationSetup />
+            {notification.message && (
+              <div
+                role="alert"
+                style={{
+                  position: "fixed",
+                  top: "20px",
+                  right: "20px",
+                  zIndex: 99999,
+                  maxWidth: "350px",
+                  padding: "16px 20px",
+                  background: "#14562e",
+                  color: "#ffffff",
+                  borderRadius: "10px",
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+                }}
+              >
+                <strong>Abdu Mart</strong>
+                <p style={{ margin: "6px 0 0" }}>{notification.message}</p>
+              </div>
+            )}
 
             {/* dropdown notifications */}
             <div className={styles.notificationWrapper}>
               <button
                 type="button"
                 className={styles.notificationBell}
-                onClick={() => setShowNotifications((previous) => !previous)}
+                onClick={() => {unlockNotificationSound();
+                  setShowNotifications((previous) => !previous)}}
                 aria-label="Toggle credit notifications"
                 aria-expanded={showNotifications}
               >
