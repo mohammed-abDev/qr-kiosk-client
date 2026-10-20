@@ -315,7 +315,7 @@ function AdminDashboard({ onLogout }) {
 
       // Play the notification sound
     const audio = new Audio("/send-notification.wav");
-      audio.volume = 0.2; // 20% volume
+      audio.volume = 0.2; 
 
     audio.play().catch((error) => {
       console.error("Notification sound failed:", error);
@@ -1129,34 +1129,51 @@ useEffect(() => {
 
             {/* push notification */}
             <PushNotificationSetup />
+
             {notification.message && (
               <div
+                className={styles.toast}
                 role="alert"
-                style={{
-                  position: "fixed",
-                  top: "20px",
-                  right: "20px",
-                  zIndex: 99999,
-                  maxWidth: "350px",
-                  padding: "16px 20px",
-                  background: "#14562e",
-                  color: "#ffffff",
-                  borderRadius: "10px",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-                }}
+                aria-live="assertive"
               >
-                <strong>Abdu Mart</strong>
-                <p style={{ margin: "6px 0 0" }}>{notification.message}</p>
+                <div className={styles.iconWrap}>
+                  <span className={styles.icon}>✓</span>
+                </div>
+
+                <div className={styles.content}>
+                  <div className={styles.header}>
+                    <strong>Abdu Mart</strong>
+                    <span className={styles.status}>NEW</span>
+                  </div>
+
+                  <p className={styles.message}>
+                    {notification.message}
+                  </p>
+
+                  <span className={styles.caption}>
+                    Credit activity notification
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  className={styles.closeButton}
+                  aria-label="Dismiss notification"
+                  onClick={() => setNotification({ message: "", type: "" })}
+                >
+                  ×
+                </button>
               </div>
             )}
-
             {/* dropdown notifications */}
             <div className={styles.notificationWrapper}>
               <button
                 type="button"
                 className={styles.notificationBell}
-                onClick={() => {unlockNotificationSound();
-                  setShowNotifications((previous) => !previous)}}
+                onClick={() => {
+                  unlockNotificationSound();
+                  setShowNotifications((previous) => !previous);
+                }}
                 aria-label="Toggle credit notifications"
                 aria-expanded={showNotifications}
               >

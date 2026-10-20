@@ -554,6 +554,178 @@ background: var(--card-bg);
   background: #f0fdf4;
 }
 
+
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 99999;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  width: min(390px, calc(100vw - 32px));
+  padding: 18px;
+
+  background: #ffffff;
+  color: #183326;
+  border: 1px solid #e2eee6;
+  border-left: 4px solid #14562e;
+  border-radius: 14px;
+
+  box-shadow:
+    0 12px 35px rgba(20, 86, 46, 0.12),
+    0 3px 10px rgba(0, 0, 0, 0.06);
+
+  animation: toastEnter 0.35s ease-out both;
+}
+
+.iconWrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  background: #eaf5ed;
+  border: 1px solid #d6eadb;
+  border-radius: 12px;
+}
+
+.icon {
+  color: #14562e;
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.header strong {
+  color: #14562e;
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: -0.2px;
+}
+
+.status {
+  padding: 3px 7px;
+  background: #eaf5ed;
+  color: #14562e;
+  border-radius: 5px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+.message {
+  margin: 7px 0 0;
+  color: #34443a;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.caption {
+  display: block;
+  margin-top: 9px;
+  color: #829087;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.closeButton {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+  margin: -5px -5px 0 0;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #7a897f;
+
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f0f4f1;
+  color: #14562e;
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid #14562e;
+  outline-offset: 2px;
+}
+
+@keyframes toastEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) translateX(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .toast {
+    top: 12px;
+    right: 12px;
+    width: calc(100vw - 24px);
+    padding: 14px;
+    gap: 11px;
+    border-radius: 12px;
+  }
+
+  .iconWrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .message {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+
+  .closeButton {
+    transition: none;
+  }
+}
+
+
 @media (max-width: 480px) {
   .notificationDropdown {
     position: fixed;
