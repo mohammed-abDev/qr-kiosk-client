@@ -1,31 +1,3 @@
-self.addEventListener("push", (event) => {
-  let data = {};
-
-  try {
-    data = event.data ? event.data.json() : {};
-  } catch {
-    data = {
-      title: "Abdu Mart",
-      body: event.data ? event.data.text() : "You have a new notification.",
-    };
-  }
-
-  const title = data.title || "Abdu Mart";
-
-  const options = {
-    body: data.body || data.message || "You have a new credit notification.",
-    icon: "/favicon.ico",
-    badge: "/favicon.ico",
-    tag: `abdu-mart-${Date.now()}`,
-    renotify: true,
-    data: {
-      url: data.url || "/admin/credit-notifications",
-    },
-  };
-
-  event.waitUntil(self.registration.showNotification(title, options));
-});
-
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
 
@@ -48,4 +20,34 @@ self.addEventListener("notificationclick", (event) => {
         return clients.openWindow(targetUrl);
       }),
   );
+});
+self.addEventListener("push", (event) => {
+  let data = {};
+
+  try {
+    data = event.data ? event.data.json() : {};
+  } catch {
+    data = {
+      body: event.data ? event.data.text() : "",
+    };
+  }
+
+  const title = data.title || "Abdu Mart — Credit Activity";
+
+  const options = {
+    body:
+      data.body ||
+      data.message ||
+      "A new credit sale or repayment was recorded.",
+    icon: "/shoping-favicon.png",
+    badge: "/favicon.ico",
+    tag: `abdu-mart-${Date.now()}`,
+    renotify: true,
+    requireInteraction: true,
+    data: {
+      url: data.url || "/admin/credit-notifications",
+    },
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
 });
