@@ -314,12 +314,13 @@ function AdminDashboard({ onLogout }) {
       );
 
       // Play the notification sound
-      const audio = new Audio("/send-notification.wav");
+    const audio = new Audio("/send-notification.wav");
+      audio.volume = 0.2; // 20% volume
 
-      audio.play().catch((error) => {
-        console.log("Notification sound could not play:", error);
-      });
-
+    audio.play().catch((error) => {
+      console.error("Notification sound failed:", error);
+    });
+    
       // Refresh the notification list and count
       setRecentNotifications((previous) => [
         notification,
@@ -998,7 +999,7 @@ useEffect(() => {
                 className={styles.profileDropdownItem}
                 onClick={() => {
                   setShowProfileMenu(false);
-                  navigate("/shop");
+                  navigate("/admin/shop");
                 }}
               >
                 <span>⚙</span>

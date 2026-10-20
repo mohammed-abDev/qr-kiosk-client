@@ -6,16 +6,18 @@ self.addEventListener("push", (event) => {
   } catch {
     data = {
       title: "Abdu Mart",
-      body: event.data?.text() || "You have a new notification.",
+      body: event.data ? event.data.text() : "You have a new notification.",
     };
   }
 
   const title = data.title || "Abdu Mart";
 
   const options = {
-    body: data.body || "You have a new credit notification.",
+    body: data.body || data.message || "You have a new credit notification.",
     icon: "/favicon.ico",
     badge: "/favicon.ico",
+    tag: `abdu-mart-${Date.now()}`,
+    renotify: true,
     data: {
       url: data.url || "/admin/credit-notifications",
     },
@@ -27,16 +29,18 @@ self.addEventListener("push", (event) => {
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
 
-  const targetUrl =
-    event.notification.data?.url || "/admin/credit-notifications";
+  const targetUrl = new URL(
+    event.notification.data?.url || "/admin/credit-notifications",
+    self.location.origin,
+  ).href;
 
   event.waitUntil(
     clients
       .matchAll({ type: "window", includeUncontrolled: true })
-      .then((windowClients) => {
+      .then(async (windowClients) => {
         for (const client of windowClients) {
-          if ("focus" in client) {
-            client.navigate(targetUrl);
+          if (client.url.startsWith(self.location.origin)) {
+            await client.navigate(targetUrl);
             return client.focus();
           }
         }
