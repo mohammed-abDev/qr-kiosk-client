@@ -364,7 +364,7 @@
 }
 
 .categoryCard:hover .categoryIcon {
-  background: #fc6d11;
+  background: #14562e;
   color: #ffffff;
 }
 
@@ -450,7 +450,7 @@
 }
 
 .categoryCard:hover .categoryArrow {
-  background: #14562e;
+  background: #fc6d11;
   color: #ffffff;
   transform: translateX(3px);
 }

@@ -372,18 +372,200 @@ function Home() {
   // CATEGORY ICON
   // =========================================
 
-  // const getCategoryIcon = (name) => {
-  //   const category = name?.toLowerCase().trim();
+  const getCategoryIcon = (name) => {
+    const category = name?.toLowerCase().trim() || "";
 
-  //   if (category === "snacks") return "▣";
-  //   if (category === "drinks") return "◉";
-  //   if (category === "food") return "♨";
-  //   if (category === "dairy") return "▥";
-  //   if (category === "bakery") return "◒";
-  //   if (category === "household") return "⌂";
+    if (
+      category.includes("snack") ||
+      category.includes("biscuit") ||
+      category.includes("candy")
+    ) {
+      return "🍿";
+    }
 
-  //   return "□";
-  // };
+    if (
+      category.includes("drink") ||
+      category.includes("water") ||
+      category.includes("juice")
+    ) {
+      return "🥤";
+    }
+
+    if (
+      category.includes("food") ||
+      category.includes("grain") ||
+      category.includes("rice")
+    ) {
+      return "🍲";
+    }
+
+    if (
+      category.includes("dairy") ||
+      category.includes("milk") ||
+      category.includes("cheese")
+    ) {
+      return "🥛";
+    }
+
+    if (category.includes("bakery") || category.includes("bread")) {
+      return "🍞";
+    }
+
+    if (category.includes("household") || category.includes("cleaning")) {
+      return "🧹";
+    }
+
+    if (
+      category.includes("fruit") ||
+      category.includes("vegetable") ||
+      category.includes("fresh") ||
+      category.includes("produce")
+    ) {
+      return "🍎";
+    }
+
+    if (
+      category.includes("personal") ||
+      category.includes("hygiene") ||
+      category.includes("bath") ||
+      category.includes("soap") ||
+      category.includes("shampoo")
+    ) {
+      return "🧴";
+    }
+
+    if (
+      category.includes("baby") ||
+      category.includes("diaper") ||
+      category.includes("infant")
+    ) {
+      return "👶";
+    }
+
+    if (
+      category.includes("pet") ||
+      category.includes("dog") ||
+      category.includes("cat")
+    ) {
+      return "🐾";
+    }
+
+    if (
+      category.includes("electronic") ||
+      category.includes("charger") ||
+      category.includes("battery") ||
+      category.includes("phone")
+    ) {
+      return "🔋";
+    }
+
+    if (
+      category.includes("medicine") ||
+      category.includes("health") ||
+      category.includes("pharmacy") ||
+      category.includes("first-aid")
+    ) {
+      return "💊";
+    }
+
+    if (
+      category.includes("tobacco") ||
+      category.includes("cigarette") ||
+      category.includes("vape") ||
+      category.includes("smoke")
+    ) {
+      return "🚬";
+    }
+
+    if (
+      category.includes("stationery") ||
+      category.includes("pen") ||
+      category.includes("paper") ||
+      category.includes("office")
+    ) {
+      return "✏️";
+    }
+
+    if (
+      category.includes("toy") ||
+      category.includes("car") ||
+      category.includes("game") ||
+      category.includes("play")
+    ) {
+      return "🧸";
+    }
+
+    if (
+      category.includes("sock") ||
+      category.includes("apparel") ||
+      category.includes("clothing") ||
+      category.includes("wear")
+    ) {
+      return "🧦";
+    }
+
+    if (
+      category.includes("cook") ||
+      category.includes("pot") ||
+      category.includes("pan") ||
+      category.includes("kitchen")
+    ) {
+      return "🍳";
+    }
+
+    if (
+      category.includes("spice") ||
+      category.includes("temire") ||
+      category.includes("seasoning") ||
+      category.includes("condiment")
+    ) {
+      return "🌶️";
+    }
+
+    if (
+      category.includes("card") ||
+      category.includes("entertainment") ||
+      category.includes("fun")
+    ) {
+      return "🃏";
+    }
+
+    if (
+      category.includes("liquid") ||
+      category.includes("soap") ||
+      category.includes("detergent") ||
+      category.includes("largo")
+    ) {
+      return "🧼";
+    }
+
+    if (
+      category.includes("cosmetic") ||
+      category.includes("makeup") ||
+      category.includes("beauty")
+    ) {
+      return "💄";
+    }
+
+    if (
+      category.includes("jewelry") ||
+      category.includes("jolery") ||
+      category.includes("ring") ||
+      category.includes("accessory") ||
+      category.includes("hair") ||
+      category.includes("band")
+    ) {
+      return "💍";
+    }
+
+    if (category.includes("other") || category.includes("misc")) {
+      return "📦";
+    }
+
+    return "□";
+  };
+
+ 
 
   // =========================================
   // COPY ACCOUNT
@@ -487,7 +669,7 @@ function Home() {
           <div>
             <strong>Abdu-Mart</strong>
             <span>Version 1.0.0</span>
-            <b>@ 2026 G.c </b>
+            <b>© 2026 G.c </b>
           </div>
         </div>
       </aside>
@@ -692,15 +874,54 @@ function Home() {
                   }
                   onClick={() => setSelectedCategory(category.name)}
                 >
-                  {/* <span>
+                  <span>
                     {category.name?.toLowerCase().includes("snack")
-                      ? "▣"
-                      : category.name?.toLowerCase().includes("drink")
-                        ? "◈"
-                        : category.name?.toLowerCase().includes("food")
-                          ? "◆"
-                          : "□"}
-                  </span> */}
+                      ? "🍿"
+                      : category.name?.toLowerCase().includes("drink") ||
+                          category.name?.toLowerCase().includes("water") ||
+                          category.name?.toLowerCase().includes("juice")
+                        ? "🥤"
+                        : category.name?.toLowerCase().includes("food") ||
+                            category.name?.toLowerCase().includes("grain") ||
+                            category.name?.toLowerCase().includes("rice")
+                          ? "🍲"
+                          : category.name?.toLowerCase().includes("dairy") ||
+                              category.name?.toLowerCase().includes("milk") ||
+                              category.name?.toLowerCase().includes("cheese")
+                            ? "🥛"
+                            : category.name?.toLowerCase().includes("bakery") ||
+                                category.name?.toLowerCase().includes("bread")
+                              ? "🍞"
+                              : category.name
+                                    ?.toLowerCase()
+                                    .includes("household") ||
+                                  category.name
+                                    ?.toLowerCase()
+                                    .includes("cleaning")
+                                ? "🧹"
+                                : category.name
+                                      ?.toLowerCase()
+                                      .includes("toy") ||
+                                    category.name
+                                      ?.toLowerCase()
+                                      .includes("game")
+                                  ? "🧸"
+                                  : category.name
+                                        ?.toLowerCase()
+                                        .includes("electronic") ||
+                                      category.name
+                                        ?.toLowerCase()
+                                        .includes("battery")
+                                    ? "🔋"
+                                    : category.name
+                                          ?.toLowerCase()
+                                          .includes("other") ||
+                                        category.name
+                                          ?.toLowerCase()
+                                          .includes("misc")
+                                      ? "📦"
+                                      : "□"}
+                  </span>
 
                   {category.name}
                 </button>

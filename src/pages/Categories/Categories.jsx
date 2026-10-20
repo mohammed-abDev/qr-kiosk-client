@@ -144,7 +144,150 @@ function Categories() {
     }
 
     if (category.includes("household") || category.includes("cleaning")) {
-      return "⌂";
+      return "🧹";
+    }
+
+    if (
+      category.includes("fruit") ||
+      category.includes("vegetable") ||
+      category.includes("fresh") ||
+      category.includes("produce")
+    ) {
+      return "🍎";
+    }
+
+    if (
+      category.includes("personal") ||
+      category.includes("hygiene") ||
+      category.includes("bath") ||
+      category.includes("soap") ||
+      category.includes("shampoo")
+    ) {
+      return "🧴";
+    }
+
+    if (
+      category.includes("baby") ||
+      category.includes("diaper") ||
+      category.includes("infant")
+    ) {
+      return "👶";
+    }
+
+    if (
+      category.includes("pet") ||
+      category.includes("dog") ||
+      category.includes("cat")
+    ) {
+      return "🐾";
+    }
+
+    if (
+      category.includes("electronic") ||
+      category.includes("charger") ||
+      category.includes("battery") ||
+      category.includes("phone")
+    ) {
+      return "🔋";
+    }
+
+    if (
+      category.includes("medicine") ||
+      category.includes("health") ||
+      category.includes("pharmacy") ||
+      category.includes("first-aid")
+    ) {
+      return "💊";
+    }
+
+    if (
+      category.includes("tobacco") ||
+      category.includes("cigarette") ||
+      category.includes("vape") ||
+      category.includes("smoke")
+    ) {
+      return "🚬";
+    }
+
+    if (
+      category.includes("stationery") ||
+      category.includes("pen") ||
+      category.includes("paper") ||
+      category.includes("office")
+    ) {
+      return "✏️";
+    }
+
+    if (
+      category.includes("toy") ||
+      category.includes("car") ||
+      category.includes("game") ||
+      category.includes("play")
+    ) {
+      return "🧸";
+    }
+
+    if (
+      category.includes("sock") ||
+      category.includes("apparel") ||
+      category.includes("clothing") ||
+      category.includes("wear")
+    ) {
+      return "🧦";
+    }
+
+    if (
+      category.includes("cook") ||
+      category.includes("pot") ||
+      category.includes("pan") ||
+      category.includes("kitchen")
+    ) {
+      return "🍳";
+    }
+
+    if (
+      category.includes("spice") ||
+      category.includes("temire") ||
+      category.includes("seasoning") ||
+      category.includes("condiment")
+    ) {
+      return "🌶️";
+    }
+
+    if (
+      category.includes("card") ||
+      category.includes("entertainment") ||
+      category.includes("fun")
+    ) {
+      return "🃏";
+    }
+
+    if (
+      category.includes("liquid") ||
+      category.includes("soap") ||
+      category.includes("detergent") ||
+      category.includes("largo")
+    ) {
+      return "🧼";
+    }
+
+    if (
+      category.includes("cosmetic") ||
+      category.includes("makeup") ||
+      category.includes("beauty")
+    ) {
+      return "💄";
+    }
+
+    if (
+      category.includes("jewelry") ||
+      category.includes("jolery") ||
+      category.includes("ring") ||
+      category.includes("accessory") ||
+      category.includes("hair") ||
+      category.includes("band")
+    ) {
+      return "💍";
     }
 
     return "▦";
