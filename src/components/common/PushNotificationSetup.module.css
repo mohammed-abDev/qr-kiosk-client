@@ -1,0 +1,248 @@
+
+/* ================================
+   PUSH NOTIFICATION SETUP
+================================ */
+
+.setup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.enableButton {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 14px;
+
+  border: 1px solid #fc6d11;
+  border-radius: 9px;
+
+  background: #fc6d11;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.enableButton:hover:not(:disabled) {
+  background: #e85e08;
+  border-color: #e85e08;
+}
+
+.enableButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.enableButton:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.enableButton:focus-visible,
+.closeButton:focus-visible {
+  outline: 2px solid #14562e;
+  outline-offset: 3px;
+}
+
+.bellIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+/* ================================
+   FLOATING STATUS MESSAGE
+================================ */
+
+.toast {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 100000;
+
+  width: min(360px, calc(100vw - 36px));
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 15px;
+  border: 1px solid #e5eae7;
+  border-left: 4px solid #088239;
+  border-radius: 13px;
+
+  background: #ffffff;
+  color: #18251d;
+  
+
+  box-shadow: 0 12px 32px rgba(20, 86, 46, 0.15);
+
+  animation: toastIn 0.25s ease-out both;
+}
+
+.toastError {
+  border-left-color: #df3944;
+}
+
+.statusIcon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  background: #eaf5ed;
+  color: #14562e ;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.toastError .statusIcon {
+  background: #fff0f1;
+  color: #df3944 !important;
+}
+
+.toastContent {
+  flex: 1;
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.toastTitle {
+  margin: 0;
+  color: #14562e !important;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.toastError .toastTitle {
+  color: #c62828 !important;
+}
+
+.toastMessage {
+  margin: 4px 0 0;
+  color: #59665e !important;
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.closeButton {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #748078;
+
+  font-size: 21px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background: #f1f5f2;
+  color: #14562e;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 480px) {
+  .setup {
+    gap: 8px;
+  }
+
+  .enableButton {
+    min-height: 36px;
+    padding: 0 11px;
+    font-size: 11px;
+  }
+
+  .toast {
+    top: 12px;
+    right: 12px;
+    width: calc(100vw - 24px);
+    padding: 12px;
+    gap: 9px;
+    border-radius: 11px;
+  }
+
+  .statusIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .toastMessage {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .toast {
+    animation: none;
+  }
+
+  .enableButton {
+    transition: none;
+  }
+}

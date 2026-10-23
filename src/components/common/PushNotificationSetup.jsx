@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import API_URL from "../../config/api";
+import styles from "./PushNotificationSetup.module.css";
 
 const VAPID_PUBLIC_KEY = import.meta.env.VITE_VAPID_PUBLIC_KEY;
 
@@ -28,7 +29,7 @@ export default function PushNotificationSetup() {
     timerRef.current = setTimeout(() => {
       setMessage(null);
       timerRef.current = null;
-    }, 4000);
+    }, 400000);
   }
 
   // Clean up the timer when the component unmounts.
@@ -115,145 +116,80 @@ export default function PushNotificationSetup() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={enableNotifications}
-        disabled={loading}
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "8px",
-          padding: "10px 16px",
-          border: "none",
-          borderRadius: "10px",
-          background: loading ? "#b8b8b8" : "#fc6d11",
-          color: "#ffffff",
-          fontWeight: 700,
-          fontSize: "14px",
-          cursor: loading ? "wait" : "pointer",
-          opacity: loading ? 0.8 : 1,
-          transition: "background 0.2s ease",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {loading ? (
-          <>
-            <span
-              style={{
-                width: "14px",
-                height: "14px",
-                border: "2px solid rgba(255,255,255,0.4)",
-                borderTopColor: "#ffffff",
-                borderRadius: "50%",
-                display: "inline-block",
-                animation: "pushSetupSpin 0.7s linear infinite",
-              }}
-            />
-            Enabling...
-          </>
-        ) : (
-          <>
-            <span aria-hidden="true">🔔</span>
-            Enable Push Notifications
-          </>
-        )}
-      </button>
+      <div className={styles.setup}>
+        <button
+          type="button"
+          className={styles.enableButton}
+          onClick={enableNotifications}
+          disabled={loading}
+          aria-busy={loading}
+        >
+          {loading ? (
+            <>
+              <span className={styles.spinner} aria-hidden="true" />
+              Enabling...
+            </>
+          ) : (
+            <>
+              <svg
+                className={styles.bellIcon}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+                <path d="M10 21h4" />
+              </svg>
+              Enable Push
+            </>
+          )}
+        </button>
+      </div>
 
       {message && (
         <div
+          className={`${styles.toast} ${
+            message.type === "error" ? styles.toastError : ""
+          }`}
           role={message.type === "error" ? "alert" : "status"}
-          aria-live="polite"
-          style={{
-            position: "fixed",
-            top: "16px",
-            right: "16px",
-            zIndex: 100000,
-            width: "min(360px, calc(100vw - 32px))",
-            boxSizing: "border-box",
-            display: "flex",
-            alignItems: "flex-start",
-            gap: "12px",
-            padding: "15px 16px",
-            borderRadius: "12px",
-            background: "#ffffff",
-            color: "#263238",
-            border: `1px solid ${
-              message.type === "success" ? "#b7e4c7" : "#fecaca"
-            }`,
-            borderLeft: `5px solid ${
-              message.type === "success" ? "#168447" : "#dc2626"
-            }`,
-            boxShadow: "0 8px 28px rgba(0,0,0,0.16)",
-            fontSize: "14px",
-            lineHeight: 1.5,
-            overflowWrap: "anywhere",
-            animation: "pushSetupToastIn 0.25s ease-out",
-          }}
+          aria-live={message.type === "error" ? "assertive" : "polite"}
         >
-          <span
-            aria-hidden="true"
-            style={{
-              width: "24px",
-              height: "24px",
-              minWidth: "24px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "50%",
-              background: message.type === "success" ? "#dcfce7" : "#fee2e2",
-              color: message.type === "success" ? "#15803d" : "#b91c1c",
-              fontWeight: 800,
-            }}
-          >
-            {message.type === "success" ? "✓" : "!"}
-          </span>
+          <div className={styles.statusIcon} aria-hidden="true">
+            {message.type === "error" ? "!" : "✓"}
+          </div>
 
-          <span style={{ flex: 1, paddingTop: "2px" }}>{message.text}</span>
+          <div className={styles.toastContent}>
+            <p className={styles.toastTitle}>
+              {message.type === "error"
+                ? "Unable to enable"
+                : "Notifications enabled"}
+            </p>
+
+            <p className={styles.toastMessage}>{message.text}</p>
+          </div>
 
           <button
             type="button"
+            className={styles.closeButton}
+            aria-label="Dismiss notification message"
             onClick={() => {
               if (timerRef.current) {
                 clearTimeout(timerRef.current);
                 timerRef.current = null;
               }
+
               setMessage(null);
-            }}
-            aria-label="Dismiss message"
-            style={{
-              border: "none",
-              background: "transparent",
-              color: "#64748b",
-              fontSize: "20px",
-              lineHeight: 1,
-              cursor: "pointer",
-              padding: "0 2px",
             }}
           >
             ×
           </button>
         </div>
       )}
-
-      <style>
-        {`
-          @keyframes pushSetupSpin {
-            to { transform: rotate(360deg); }
-          }
-
-          @keyframes pushSetupToastIn {
-            from {
-              opacity: 0;
-              transform: translateY(-8px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
     </>
   );
+
 }
